@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="tanner_portfolio.client/tanner_portfolio.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Tanner_Portfolio.Server/Tanner_Portfolio.Server.csproj" />
+</Solution>
