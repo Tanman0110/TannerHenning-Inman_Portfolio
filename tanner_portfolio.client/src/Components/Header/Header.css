@@ -1,0 +1,77 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* logo left, nav right */
+    align-items: center;
+    padding: 0.25rem 2rem; /* small top/bottom padding, more left/right */
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    background-color: #FFB81C;
+}
+
+.progressTrack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: #002855;
+    transition: none; /* ✅ make it track perfectly */
+}
+
+.header-left .logo {
+    height: 75px; /* logo height */
+    width: auto; /* maintain aspect ratio */
+    object-fit: contain;
+}
+
+.header-right {
+    display: flex;
+    gap: 2.5rem; /* spacing between links */
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+    .header-right a {
+        text-decoration: none;
+        color: #002855; /* WV blue */
+        font-weight: 700; /* fixed, prevents shifting */
+        padding: 0.25rem 0; /* small top/bottom padding */
+        transition: color 0.2s, transform 0.2s;
+    }
+
+        .header-right a:hover,
+        .header-right a.active {
+            color: #001F3D; /* darker WV blue */
+            transform: scale(1.1); /* slight growth on hover */
+        }
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+    .header {
+        padding: 0.5rem 1rem;
+    }
+
+    .header-left .logo {
+        height: 40px;
+    }
+
+    .header-right a {
+        font-size: 0.9rem;
+        gap: 1rem; /* optional smaller gap on mobile */
+    }
+}
