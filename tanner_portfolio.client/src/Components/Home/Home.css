@@ -1,3 +1,8 @@
 .home {
-    background-color: #fff5cc; /* light WV yellow */
+    background: linear-gradient( 
+        to bottom, 
+        #EEE6DD 0%, 
+        #EEE6DD 78%, 
+        #F6F1EA 100% 
+    );
 }

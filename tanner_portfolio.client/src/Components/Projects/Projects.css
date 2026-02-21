@@ -1,3 +1,8 @@
 .projects {
-    background-color: #f2f2f2; /* neutral gray */
+    background: linear-gradient( 
+        to bottom, 
+        #F6F1EA 0%, 
+        #F6F1EA 78%, 
+        #EEE6DD 100% 
+    );
 }
