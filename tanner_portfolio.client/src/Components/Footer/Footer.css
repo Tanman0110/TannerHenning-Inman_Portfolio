@@ -1,6 +1,6 @@
 .footer {
     width: 100%;
-    height: 170px; /* roughly double header height */
+    height: 140px; /* roughly double header height */
 
     background: var(--header-bg); /* theme-aware */
     color: var(--text);
