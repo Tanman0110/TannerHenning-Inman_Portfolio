@@ -1,8 +1,10 @@
 .skills {
-    background: linear-gradient( 
-        to bottom, 
-        var(--grad-a-top) 0%, 
-        var(--grad-a-top) 78%, 
-        var(--grad-a-bottom) 100% 
-    );
+    background: 
+        radial-gradient( 
+            ellipse 260% 120% at 50% 155%, 
+            var(--tone-3) 0%, 
+            var(--tone-3) 62%, 
+            var(--tone-2) 88%, 
+            var(--tone-2) 100% 
+        );
 }

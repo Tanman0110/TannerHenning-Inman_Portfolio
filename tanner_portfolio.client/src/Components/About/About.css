@@ -1,8 +1,9 @@
 .about {
-    background: linear-gradient( 
-        to bottom, 
-        var(--grad-b-top) 0%, 
-        var(--grad-b-top) 78%, 
-        var(--grad-b-bottom) 100% 
+    background: radial-gradient( 
+        ellipse 260% 120% at 50% 155%, 
+        var(--tone-2) 0%, 
+        var(--tone-2) 62%, 
+        var(--tone-1) 88%, 
+        var(--tone-1) 100% 
     );
 }

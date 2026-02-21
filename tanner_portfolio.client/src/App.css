@@ -1,45 +1,45 @@
-﻿/* Light theme */
+﻿/* LIGHT */
 :root {
-    --bg: #f7f2ec;
     --text: #3b3a36;
     --text-strong: #2f2e2a;
     --accent: #6b5e52;
     --border: rgba(0, 0, 0, 0.12);
     --shadow: rgba(0, 0, 0, 0.10);
-    --header-bg: rgba(214, 198, 184, 0.75);
     --progress-track: rgba(0, 0, 0, 0.10);
-    --toggle-bg: rgba(255, 255, 255, 0.55);
     --focus: rgba(107, 94, 82, 0.45);
-    /* Base "paper" colors (LIGHT) */
-    --paper-1: #F6F1EA;
-    --paper-2: #EEE6DD;
-    /* Alternating gradients (LIGHT) */
-    --grad-a-top: var(--paper-2);
-    --grad-a-bottom: var(--paper-1);
-    --grad-b-top: var(--paper-1);
-    --grad-b-bottom: var(--paper-2);
+    /* Gradual tones (top -> bottom) */
+    --tone-0: #F7F2EC; /* Home */
+    --tone-1: #F1E9E0; /* About */
+    --tone-2: #E9DED4; /* Skills */
+    --tone-3: #DFD0C3; /* Projects */
+    --tone-4: #D2BEAE; /* Experience */
+    --tone-5: #C6AE9A; /* Contact */
+    /* Header/Footer */
+    --tone-6: #B99A83;
+    --header-bg: var(--tone-6);
+    --footer-bg: var(--tone-6);
 }
 
-    /* Midnight theme */
+    /* MIDNIGHT */
     :root[data-theme="midnight"] {
-        --bg: #0b1220;
         --text: #e7eefc;
         --text-strong: #ffffff;
         --accent: #7aa2ff;
         --border: rgba(231, 238, 252, 0.18);
         --shadow: rgba(0, 0, 0, 0.45);
-        --header-bg: rgba(8, 14, 28, 0.72);
         --progress-track: rgba(231, 238, 252, 0.16);
-        --toggle-bg: rgba(255, 255, 255, 0.06);
         --focus: rgba(122, 162, 255, 0.45);
-        /* Base "paper" colors (MIDNIGHT) */
-        --paper-1: #0b1220;
-        --paper-2: #0f1a2f;
-        /* Alternating gradients (MIDNIGHT) */
-        --grad-a-top: var(--paper-2);
-        --grad-a-bottom: var(--paper-1);
-        --grad-b-top: var(--paper-1);
-        --grad-b-bottom: var(--paper-2);
+        /* Gradual tones (top -> bottom) */
+        --tone-0: #061d40;
+        --tone-1: #071c3a;
+        --tone-2: #081a33;
+        --tone-3: #09182c;
+        --tone-4: #0a1526;
+        --tone-5: #0b1220;
+        /* Header/Footer */
+        --tone-6: #04162f;
+        --header-bg: var(--tone-6);
+        --footer-bg: var(--tone-6);
     }
 
 html,
@@ -47,9 +47,10 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100%;
-    background: var(--bg) !important;
-    color: var(--text) !important;
+    background: var(--tone-0);
+    color: var(--text);
     font-family: "Palatino Linotype", Palatino, "Book Antiqua", serif;
+    overflow-x: hidden;
 }
 
 #root {
@@ -67,8 +68,7 @@ body {
     color-scheme: light;
 }
 
-th,
-td {
+th, td {
     padding-left: 1rem;
     padding-right: 1rem;
 }
