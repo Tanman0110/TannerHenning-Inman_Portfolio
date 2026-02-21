@@ -1,6 +1,6 @@
 .home {
     background: radial-gradient( ellipse 260% 120% at 50% 155%, var(--tone-1) 0%, var(--tone-1) 62%, var(--tone-0) 88%, var(--tone-0) 100% );
-    min-height: calc(100vh - 72px); /* adjust if needed */
+    min-height: calc(100vh - 72px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,3 +32,44 @@
     text-transform: uppercase;
     opacity: 0.6;
 }
+
+/* --- Sleek Filled Button --- */
+
+.home-btn {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--accent); /* your accent color */
+    color: var(--tone-0); /* button text color */
+    border: none;
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+    /* Prevent blue link styles */
+    .home-btn:visited,
+    .home-btn:active,
+    .home-btn:hover {
+        color: var(--tone-0);
+        text-decoration: none;
+    }
+
+    /* Hover effect */
+    .home-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Custom focus styling (accessible but on-brand) */
+    .home-btn:focus {
+        outline: none;
+    }
+
+    .home-btn:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.35);
+        outline-offset: 4px;
+    }

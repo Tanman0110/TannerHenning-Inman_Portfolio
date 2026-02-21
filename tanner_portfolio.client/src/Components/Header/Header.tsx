@@ -1,12 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Sun, Moon } from "lucide-react";
+import { smoothScrollToId, clamp01 } from "../../Utils/SmoothScroll";
 import "./Header.css";
 
 const HEADER_OFFSET = 85;
-
-function clamp01(n: number) {
-    return Math.max(0, Math.min(1, n));
-}
 
 type SectionId =
     | "home"
@@ -145,52 +142,6 @@ export default function Header() {
         return () => window.clearTimeout(t);
     }, [activeSection]);
 
-    // --- SMOOTH SCROLL ---
-    function easeOutCubic(t: number) {
-        return 1 - Math.pow(1 - t, 3);
-    }
-
-    function smoothScrollToId(id: string, offset = HEADER_OFFSET) {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const doc = document.documentElement;
-        const scrollable = doc.scrollHeight - window.innerHeight;
-
-        const startY = window.scrollY;
-        const rawTargetY = el.getBoundingClientRect().top + window.scrollY - offset;
-        const targetY = Math.max(0, rawTargetY);
-
-        const distance = targetY - startY;
-        const absDist = Math.abs(distance);
-
-        const minDuration = 450;
-        const maxDuration = 900;
-        const duration = Math.min(maxDuration, Math.max(minDuration, absDist * 0.6));
-
-        let startTime: number | null = null;
-
-        function step(ts: number) {
-            if (startTime === null) startTime = ts;
-
-            const elapsed = ts - startTime;
-            const t = Math.min(1, elapsed / duration);
-            const eased = easeOutCubic(t);
-
-            const nextY = startY + distance * eased;
-            window.scrollTo(0, nextY);
-
-            if (scrollable > 0) {
-                const p = nextY / scrollable;
-                setProgress(clamp01(p));
-            }
-
-            if (t < 1) requestAnimationFrame(step);
-        }
-
-        requestAnimationFrame(step);
-    }
-
     const isMidnight = theme === "midnight";
 
     return (
@@ -226,7 +177,8 @@ export default function Header() {
                             className={`navLink ${isActive ? "active" : ""} ${enterClass} ${exitClass}`}
                             onClick={(e) => {
                                 e.preventDefault();
-                                smoothScrollToId(l.id);
+                                // same smooth scroll as before, now from util:
+                                smoothScrollToId(l.id, HEADER_OFFSET, setProgress);
                             }}
                         >
                             {l.label}
