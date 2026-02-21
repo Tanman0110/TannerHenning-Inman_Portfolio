@@ -7,7 +7,6 @@
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-    /* IMPORTANT: let sections follow the theme */
     background: var(--bg);
     color: var(--text);
 }

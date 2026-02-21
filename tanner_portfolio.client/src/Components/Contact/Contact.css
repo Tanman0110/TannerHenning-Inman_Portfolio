@@ -1,3 +1,8 @@
 .contact {
-    background: linear-gradient( to bottom, var(--grad-a-top) 0%, var(--grad-a-top) 100% );
+    background: linear-gradient( 
+        to bottom,
+        var(--grad-b-top) 0%, 
+        var(--grad-b-top) 88%,
+        var(--header-bg) 100% 
+    );
 }

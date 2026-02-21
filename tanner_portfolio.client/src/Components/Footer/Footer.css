@@ -1,13 +1,11 @@
 .footer {
     width: 100%;
-    height: 140px; /* roughly double header height */
-
-    background: var(--header-bg); /* theme-aware */
+    height: 170px;
+    background: var(--header-bg);
     color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--border);
     box-sizing: border-box;
 }
 

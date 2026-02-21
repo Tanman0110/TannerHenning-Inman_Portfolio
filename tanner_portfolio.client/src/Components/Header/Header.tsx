@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 import "./Header.css";
 
@@ -8,13 +8,27 @@ function clamp01(n: number) {
     return Math.max(0, Math.min(1, n));
 }
 
-type SectionId = "home" | "about" | "skills" | "projects" | "contact";
+type SectionId =
+    | "home"
+    | "about"
+    | "skills"
+    | "projects"
+    | "experience"
+    | "contact";
+
 type ThemeMode = "light" | "midnight";
+type ScrollDir = "down" | "up";
 
 export default function Header() {
     const [progress, setProgress] = useState(0);
     const [activeSection, setActiveSection] = useState<SectionId>("home");
+
     const [theme, setTheme] = useState<ThemeMode>("light");
+    const [scrollDir, setScrollDir] = useState<ScrollDir>("down");
+
+    const prevActiveRef = useRef<SectionId>("home");
+    const [enteringId, setEnteringId] = useState<SectionId | null>(null);
+    const [exitingId, setExitingId] = useState<SectionId | null>(null);
 
     const links = useMemo(
         () =>
@@ -23,6 +37,7 @@ export default function Header() {
                 { id: "about", label: "About" },
                 { id: "skills", label: "Skills" },
                 { id: "projects", label: "Projects" },
+                { id: "experience", label: "Experience" },
                 { id: "contact", label: "Contact" },
             ] as const,
         []
@@ -49,30 +64,37 @@ export default function Header() {
         const initial: ThemeMode = prefersDark ? "midnight" : "light";
         setTheme(initial);
         applyTheme(initial);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         applyTheme(theme);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [theme]);
 
-    // --- PROGRESS BAR ---
+    // --- PROGRESS + SCROLL DIRECTION ---
     useEffect(() => {
-        const updateFromWindow = () => {
+        let lastY = window.scrollY;
+
+        const onScroll = () => {
             const y = window.scrollY;
+
+            const delta = y - lastY;
+            if (Math.abs(delta) > 2) {
+                setScrollDir(delta > 0 ? "down" : "up");
+                lastY = y;
+            }
+
             const doc = document.documentElement;
             const scrollable = doc.scrollHeight - window.innerHeight;
             const p = scrollable > 0 ? y / scrollable : 0;
             setProgress(clamp01(p));
         };
 
-        updateFromWindow();
-        window.addEventListener("scroll", updateFromWindow, { passive: true });
-        return () => window.removeEventListener("scroll", updateFromWindow);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    // --- ACTIVE SECTION (underline) ---
+    // --- ACTIVE SECTION TRACKING ---
     useEffect(() => {
         const sectionEls = links
             .map((l) => document.getElementById(l.id))
@@ -102,6 +124,26 @@ export default function Header() {
         sectionEls.forEach((el) => observer.observe(el));
         return () => observer.disconnect();
     }, [links]);
+
+    // --- ENTER/EXIT UNDERLINE DIRECTION CONTROL ---
+    useEffect(() => {
+        const prev = prevActiveRef.current;
+        const next = activeSection;
+
+        if (prev === next) return;
+
+        setExitingId(prev);
+        setEnteringId(next);
+
+        prevActiveRef.current = next;
+
+        const t = window.setTimeout(() => {
+            setExitingId(null);
+            setEnteringId(null);
+        }, 260);
+
+        return () => window.clearTimeout(t);
+    }, [activeSection]);
 
     // --- SMOOTH SCROLL ---
     function easeOutCubic(t: number) {
@@ -160,19 +202,37 @@ export default function Header() {
             <div className="brand">𝕋</div>
 
             <nav aria-label="Primary" className="nav">
-                {links.map((l) => (
-                    <a
-                        key={l.id}
-                        href={`#${l.id}`}
-                        className={`navLink ${activeSection === l.id ? "active" : ""}`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            smoothScrollToId(l.id);
-                        }}
-                    >
-                        {l.label}
-                    </a>
-                ))}
+                {links.map((l) => {
+                    const isActive = activeSection === l.id;
+
+                    const enterClass =
+                        enteringId === l.id
+                            ? scrollDir === "down"
+                                ? "underline-enter-down"
+                                : "underline-enter-up"
+                            : "";
+
+                    const exitClass =
+                        exitingId === l.id
+                            ? scrollDir === "down"
+                                ? "underline-exit-down"
+                                : "underline-exit-up"
+                            : "";
+
+                    return (
+                        <a
+                            key={l.id}
+                            href={`#${l.id}`}
+                            className={`navLink ${isActive ? "active" : ""} ${enterClass} ${exitClass}`}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                smoothScrollToId(l.id);
+                            }}
+                        >
+                            {l.label}
+                        </a>
+                    );
+                })}
             </nav>
 
             <div className="header-right">
@@ -183,7 +243,7 @@ export default function Header() {
                     onClick={() => setTheme(isMidnight ? "light" : "midnight")}
                     title={isMidnight ? "Midnight mode" : "Light mode"}
                 >
-                    {isMidnight ? <Moon className="themeIcon" /> : <Sun className="themeIcon" />}
+                    {isMidnight ? <Moon size={22} strokeWidth={2} /> : <Sun size={22} strokeWidth={2} />}
                 </button>
             </div>
         </header>

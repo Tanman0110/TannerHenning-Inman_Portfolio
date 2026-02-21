@@ -1,4 +1,4 @@
-﻿/* LIGHT DEFAULT */
+﻿/* Light theme */
 :root {
     --bg: #f7f2ec;
     --text: #3b3a36;
@@ -20,7 +20,7 @@
     --grad-b-bottom: var(--paper-2);
 }
 
-    /* MIDNIGHT */
+    /* Midnight theme */
     :root[data-theme="midnight"] {
         --bg: #0b1220;
         --text: #e7eefc;
@@ -33,8 +33,8 @@
         --toggle-bg: rgba(255, 255, 255, 0.06);
         --focus: rgba(122, 162, 255, 0.45);
         /* Base "paper" colors (MIDNIGHT) */
-        --paper-1: #0b1220; /* deep midnight */
-        --paper-2: #0f1a2f; /* slightly lighter */
+        --paper-1: #0b1220;
+        --paper-2: #0f1a2f;
         /* Alternating gradients (MIDNIGHT) */
         --grad-a-top: var(--paper-2);
         --grad-a-bottom: var(--paper-1);
@@ -42,7 +42,6 @@
         --grad-b-bottom: var(--paper-2);
     }
 
-/* APPLY TO ENTIRE DOCUMENT */
 html,
 body {
     margin: 0;
@@ -60,7 +59,6 @@ body {
     text-align: center;
 }
 
-/* Form control hint */
 :root[data-theme="midnight"] {
     color-scheme: dark;
 }

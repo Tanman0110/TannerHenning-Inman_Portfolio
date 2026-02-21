@@ -10,18 +10,19 @@
     background-color: var(--header-bg, rgba(214, 198, 184, 0.75));
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    box-shadow: 0 2px 4px var(--shadow, rgba(0,0,0,0.10));
+    box-shadow: 0 2px 4px var(--shadow, rgba(0, 0, 0, 0.10));
     box-sizing: border-box;
 }
 
-/* Right side: nav + toggle */
-.header-right {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+/*Logo branding*/
+.brand {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text, #3b3a36);
+    letter-spacing: 1px;
+    margin-left: 0.5rem;
 }
 
-/* Nav */
 .nav {
     position: absolute;
     left: 50%;
@@ -33,7 +34,7 @@
 
     .nav a {
         text-decoration: none;
-        color: var(--text, #3B3A36);
+        color: var(--text, #3b3a36);
         font-weight: 700;
         padding: 0.5rem 0.75rem;
         display: inline-block;
@@ -42,23 +43,21 @@
 
         .nav a:hover,
         .nav a.active {
-            color: var(--text-strong, #2F2E2A);
+            color: var(--text-strong, #2f2e2a);
             transform: scale(1.06);
         }
 
-.brand {
-    font-size: 2.5rem;
-    font-weight: 400;
-    color: var(--text);
-    letter-spacing: 1px;
+.header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 
-/* Base link class (your code uses .navLink) */
+/* Nav underline */
 .navLink {
     position: relative;
 }
 
-    /* Underline bar */
     .navLink::after {
         content: "";
         position: absolute;
@@ -66,9 +65,8 @@
         left: 50%;
         width: calc(100% + 12px);
         height: 3px;
-        background: var(--accent, #6B5E52);
+        background: var(--accent, #6b5e52);
         transform: translateX(-50%) scaleX(0);
-        transform-origin: left;
         transition: transform 220ms ease;
     }
 
@@ -76,69 +74,75 @@
         transform: translateX(-50%) scaleX(1);
     }
 
-/* Progress bar track */
+    .navLink.underline-enter-down::after {
+        transform-origin: left;
+    }
+
+    .navLink.underline-exit-down::after {
+        transform-origin: right;
+    }
+
+    .navLink.underline-enter-up::after {
+        transform-origin: right;
+    }
+
+    .navLink.underline-exit-up::after {
+        transform-origin: left;
+    }
+
+/* Progress bar */
 .progressTrack {
     position: absolute;
     top: 0;
     left: 0;
     height: 4px;
     width: 100%;
-    background: var(--progress-track, rgba(0, 0, 0, 0.10));
+    background: var(--progress-track, rgba(0, 0, 0, 0.1));
 }
 
-/* Progress bar fill */
 .progressBar {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 0%;
-    background: var(--accent, #6B5E52);
+    background: var(--accent, #6b5e52);
     transition: none;
 }
 
-/* Theme toggle button */
+/* Icon */
 .themeToggle {
-    background: transparent;
-    border: none;
-    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--text);
-    transition: transform 0.15s ease, color 0.2s ease;
+    color: var(--text, #3b3a36);
+    box-shadow: none !important;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
     .themeToggle:hover {
         transform: scale(1.1);
+        opacity: 0.9;
     }
 
     .themeToggle:focus {
         outline: none;
     }
 
-    .themeToggle:active {
-        transform: translateY(0px);
-    }
-
     .themeToggle:focus-visible {
         outline: 3px solid var(--focus, rgba(107, 94, 82, 0.45));
-        outline-offset: 3px;
+        outline-offset: 4px;
+        border-radius: 999px;
     }
 
-/* Imported icon size */
-.themeIcon {
-    width: 22px !important;
-    height: 22px !important;
-    min-width: 22px;
-    min-height: 22px;
-    display: block;
-    flex-shrink: 0;
-    stroke-width: 2;
-}
-
-/* Responsive */
+/* responsive */
 @media (max-width: 600px) {
     .header {
         padding: 0.5rem 1rem;
@@ -152,15 +156,4 @@
             font-size: 0.9rem;
             padding: 0.4rem 0.5rem;
         }
-
-    .themeToggle {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-    }
-
-    .themeIcon {
-        width: 18px;
-        height: 18px;
-    }
 }

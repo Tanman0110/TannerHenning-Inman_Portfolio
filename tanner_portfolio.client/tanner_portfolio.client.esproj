@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\Components\Footer\" />
+    <Folder Include="src\Components\Experience\" />
     <Folder Include="src\Components\Skills\" />
   </ItemGroup>
 </Project>
