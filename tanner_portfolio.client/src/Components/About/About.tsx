@@ -1,8 +1,18 @@
 import "../Section.css";
 import "./About.css";
-import { Wrench, Code2, Users, Gauge } from "lucide-react";
+import { smoothScrollToId } from "../../Utils/SmoothScroll";
 
 export default function About() {
+
+    const HEADER_OFFSET = 85;
+
+    const handleScrollToSkills = (
+        e: React.MouseEvent<HTMLAnchorElement>
+    ) => {
+        e.preventDefault();
+        smoothScrollToId("skills", HEADER_OFFSET);
+    };
+
     return (
         <section id="about" className="section about">
             <div className="about-inner">
@@ -22,6 +32,13 @@ export default function About() {
                                 src="/src/assets/headshot.jpeg"
                                 alt="Tanner Henning-Inman"
                             />
+                            <a
+                                href="#about"
+                                className="about-btn"
+                                onClick={handleScrollToSkills}
+                            >
+                                My Skills
+                            </a>
                         </div>
                     </div>
 
