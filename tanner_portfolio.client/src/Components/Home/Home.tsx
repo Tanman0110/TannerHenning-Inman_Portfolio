@@ -1,11 +1,40 @@
 import "../Section.css";
 import "./Home.css";
+import React from "react";
+import { smoothScrollToId } from "../../Utils/SmoothScroll";
+
+const HEADER_OFFSET = 85;
 
 export default function Home() {
+    const handleScrollToAbout = (
+        e: React.MouseEvent<HTMLAnchorElement>
+    ) => {
+        e.preventDefault();
+        smoothScrollToId("about", HEADER_OFFSET);
+    };
+
     return (
-        <section id="home" className="section home">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Hi, I’m Tanner Henning-Inman — Front-End Developer | React & ASP.NET</p>
+        <section id="home" className="home">
+            <div className="home-content">
+                <h1 className="home-line">
+                    Thoughtful Code
+                </h1>
+                <h1 className="home-line">
+                    Reliable Systems
+                </h1>
+
+                <p className="home-subtitle">
+                    Tanner Henning-Inman — Full Stack Developer
+                </p>
+
+                <a
+                    href="#about"
+                    className="home-btn"
+                    onClick={handleScrollToAbout}
+                >
+                    Learn About Me
+                </a>
+            </div>
         </section>
     );
 }
