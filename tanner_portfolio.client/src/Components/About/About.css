@@ -1,9 +1,86 @@
 .about {
-    background: radial-gradient( 
-        ellipse 260% 120% at 50% 155%, 
-        var(--tone-2) 0%, 
-        var(--tone-2) 62%, 
-        var(--tone-1) 88%, 
-        var(--tone-1) 100% 
-    );
+    background: 
+        radial-gradient( 
+            ellipse 260% 120% at 50% 155%, 
+            var(--tone-2) 0%, 
+            var(--tone-2) 62%, 
+            var(--tone-1) 88%, 
+            var(--tone-1) 100% 
+        );
+}
+
+.about-inner {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.about-titleWrap {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-title {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: -0.02em;
+}
+
+.about-underline {
+    width: 90px;
+    height: 2px;
+    margin: 0.9rem auto 0;
+    background: var(--accent);
+    opacity: 0.9;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start; /* align top instead of center */
+}
+
+.about-photoWrap {
+    display: flex;
+    justify-content: center;
+}
+
+.about-photo {
+    width: min(360px, 100%);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* right side */
+.about-kicker {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.about-body p {
+    margin: 0 0 1.2rem;
+    font-size: clamp(1.05rem, 1vw, 1.15rem);
+    line-height: 1.75;
+    opacity: 0.9;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-photo {
+        width: min(420px, 100%);
+    }
+
+    .about-cards {
+        grid-template-columns: 1fr;
+    }
 }
