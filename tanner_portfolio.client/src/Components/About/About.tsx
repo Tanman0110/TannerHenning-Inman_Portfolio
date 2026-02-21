@@ -27,7 +27,7 @@ export default function About() {
 
                     {/* RIGHT COLUMN */}
                     <div className="about-content">
-                        <h3 className="about-kicker">Your Section Title</h3>
+                        <h3 className="about-kicker">About Me</h3>
 
                         <div className="about-body">
                             <p>

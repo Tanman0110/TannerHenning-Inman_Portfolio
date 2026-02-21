@@ -12,6 +12,7 @@
 .about-inner {
     width: min(1100px, 100%);
     margin: 0 auto;
+    padding-bottom: 5rem;
 }
 
 .about-titleWrap {
