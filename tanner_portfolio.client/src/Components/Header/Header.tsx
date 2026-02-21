@@ -159,23 +159,23 @@ export default function Header() {
 
             <div className="brand">𝕋</div>
 
-            <div className="header-right">
-                <nav aria-label="Primary" className="nav">
-                    {links.map((l) => (
-                        <a
-                            key={l.id}
-                            href={`#${l.id}`}
-                            className={`navLink ${activeSection === l.id ? "active" : ""}`}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                smoothScrollToId(l.id);
-                            }}
-                        >
-                            {l.label}
-                        </a>
-                    ))}
-                </nav>
+            <nav aria-label="Primary" className="nav">
+                {links.map((l) => (
+                    <a
+                        key={l.id}
+                        href={`#${l.id}`}
+                        className={`navLink ${activeSection === l.id ? "active" : ""}`}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            smoothScrollToId(l.id);
+                        }}
+                    >
+                        {l.label}
+                    </a>
+                ))}
+            </nav>
 
+            <div className="header-right">
                 <button
                     type="button"
                     className="themeToggle"
