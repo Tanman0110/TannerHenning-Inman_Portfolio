@@ -4,10 +4,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 2rem;
-    background-color: rgba(214, 198, 184, 0.75); /* more transparent */
-    backdrop-filter: blur(4px); /* much lighter blur */
+    background-color: var(--header-bg, rgba(214, 198, 184, 0.75));
+    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 4px var(--shadow, rgba(0,0,0,0.10));
     position: fixed;
     top: 0;
     left: 0;
@@ -15,35 +15,41 @@
     box-sizing: border-box;
 }
 
-/* Nav container */
+/* Right side: nav + toggle */
 .header-right {
     display: flex;
-    gap: 2.5rem; /* spacing between links */
+    align-items: center;
+    gap: 1.25rem;
     flex-shrink: 0;
     white-space: nowrap;
 }
 
-    /* Nav links (base) */
-    .header-right a {
+/* Nav */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+    .nav a {
         text-decoration: none;
-        color: #3B3A36; /* warm charcoal */
+        color: var(--text, #3B3A36);
         font-weight: 700;
-        padding: 0.5rem 0.75rem; /* gives breathing room + prevents overlap when scaling */
+        padding: 0.5rem 0.75rem;
         display: inline-block;
         transition: color 180ms ease, transform 180ms ease;
     }
 
-        /* Hover + active scale */
-        .header-right a:hover,
-        .header-right a.active {
-            color: #2F2E2A; /* slightly darker */
+        .nav a:hover,
+        .nav a.active {
+            color: var(--text-strong, #2F2E2A);
             transform: scale(1.06);
         }
 
 .brand {
-    font-size: 2.5rem; /* adjust size */
+    font-size: 2.5rem;
     font-weight: 400;
-    color: #3B3A36; /* warm charcoal */
+    color: var(--text, #3B3A36);
     letter-spacing: 1px;
     margin-left: 0.5rem;
 }
@@ -53,17 +59,17 @@
     position: relative;
 }
 
-    /* Underline bar (centered, extends a little past both sides) */
+    /* Underline bar */
     .navLink::after {
         content: "";
         position: absolute;
         bottom: -1px;
         left: 50%;
-        width: calc(100% + 12px); /* extends 6px each side */
+        width: calc(100% + 12px);
         height: 3px;
-        background: #6B5E52; /* warm accent bar */
+        background: var(--accent, #6B5E52);
         transform: translateX(-50%) scaleX(0);
-        transform-origin: left; /* animate left -> right */
+        transform-origin: left;
         transition: transform 220ms ease;
     }
 
@@ -78,7 +84,7 @@
     left: 0;
     height: 4px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.10);
+    background: var(--progress-track, rgba(0, 0, 0, 0.10));
 }
 
 /* Progress bar fill */
@@ -88,8 +94,47 @@
     left: 0;
     height: 100%;
     width: 0%;
-    background: #6B5E52; /* match underline accent */
-    transition: none; /* keep it perfectly synced */
+    background: var(--accent, #6B5E52);
+    transition: none;
+}
+
+/* Theme toggle button */
+.themeToggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border, rgba(0,0,0,0.12));
+    background: var(--toggle-bg, rgba(255,255,255,0.55));
+    color: var(--text, #3B3A36);
+    cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+    .themeToggle:hover {
+        transform: translateY(-1px);
+    }
+
+    .themeToggle:active {
+        transform: translateY(0px);
+    }
+
+    .themeToggle:focus-visible {
+        outline: 3px solid var(--focus, rgba(107, 94, 82, 0.45));
+        outline-offset: 3px;
+    }
+
+/* Imported icon size */
+.themeIcon {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px;
+    min-height: 22px;
+    display: block;
+    flex-shrink: 0;
+    stroke-width: 2;
 }
 
 /* Responsive */
@@ -98,16 +143,23 @@
         padding: 0.5rem 1rem;
     }
 
-    .header-left .logo {
-        height: 40px;
-    }
-
-    .header-right {
+    .nav {
         gap: 1rem;
     }
 
-        .header-right a {
+        .nav a {
             font-size: 0.9rem;
             padding: 0.4rem 0.5rem;
         }
+
+    .themeToggle {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .themeIcon {
+        width: 18px;
+        height: 18px;
+    }
 }

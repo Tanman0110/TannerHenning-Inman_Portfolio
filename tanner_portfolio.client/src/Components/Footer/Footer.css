@@ -1,0 +1,20 @@
+.footer {
+    width: 100%;
+    height: 170px; /* roughly double header height */
+
+    background: var(--header-bg); /* theme-aware */
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--border);
+    box-sizing: border-box;
+}
+
+.footer-name {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+    text-align: center;
+}

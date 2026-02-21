@@ -1,15 +1,76 @@
-﻿#root {
+﻿/* LIGHT DEFAULT */
+:root {
+    --bg: #f7f2ec;
+    --text: #3b3a36;
+    --text-strong: #2f2e2a;
+    --accent: #6b5e52;
+    --border: rgba(0, 0, 0, 0.12);
+    --shadow: rgba(0, 0, 0, 0.10);
+    --header-bg: rgba(214, 198, 184, 0.75);
+    --progress-track: rgba(0, 0, 0, 0.10);
+    --toggle-bg: rgba(255, 255, 255, 0.55);
+    --focus: rgba(107, 94, 82, 0.45);
+    /* Base "paper" colors (LIGHT) */
+    --paper-1: #F6F1EA;
+    --paper-2: #EEE6DD;
+    /* Alternating gradients (LIGHT) */
+    --grad-a-top: var(--paper-2);
+    --grad-a-bottom: var(--paper-1);
+    --grad-b-top: var(--paper-1);
+    --grad-b-bottom: var(--paper-2);
+}
+
+    /* MIDNIGHT */
+    :root[data-theme="midnight"] {
+        --bg: #0b1220;
+        --text: #e7eefc;
+        --text-strong: #ffffff;
+        --accent: #7aa2ff;
+        --border: rgba(231, 238, 252, 0.18);
+        --shadow: rgba(0, 0, 0, 0.45);
+        --header-bg: rgba(8, 14, 28, 0.72);
+        --progress-track: rgba(231, 238, 252, 0.16);
+        --toggle-bg: rgba(255, 255, 255, 0.06);
+        --focus: rgba(122, 162, 255, 0.45);
+        /* Base "paper" colors (MIDNIGHT) */
+        --paper-1: #0b1220; /* deep midnight */
+        --paper-2: #0f1a2f; /* slightly lighter */
+        /* Alternating gradients (MIDNIGHT) */
+        --grad-a-top: var(--paper-2);
+        --grad-a-bottom: var(--paper-1);
+        --grad-b-top: var(--paper-1);
+        --grad-b-bottom: var(--paper-2);
+    }
+
+/* APPLY TO ENTIRE DOCUMENT */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: "Palatino Linotype", Palatino, "Book Antiqua", serif;
+}
+
+#root {
     width: 100%;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-body {
-    font-family: "Palatino Linotype", Palatino, "Book Antiqua", serif;
+/* Form control hint */
+:root[data-theme="midnight"] {
+    color-scheme: dark;
 }
 
-th, td {
+:root:not([data-theme="midnight"]) {
+    color-scheme: light;
+}
+
+th,
+td {
     padding-left: 1rem;
     padding-right: 1rem;
 }
