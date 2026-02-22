@@ -1,12 +1,6 @@
 .skills {
-    background: 
-        radial-gradient( 
-            ellipse 260% 120% at 50% 155%, 
-            var(--tone-3) 0%, 
-            var(--tone-3) 62%, 
-            var(--tone-2) 88%, 
-            var(--tone-2) 100% 
-        );
+    background: radial-gradient( ellipse 260% 120% at 50% 155%, var(--tone-3) 0%, var(--tone-3) 62%, var(--tone-2) 88%, var(--tone-2) 100% );
+    scroll-margin-top: 95px;
 }
 
 /* Fill viewport so stage can truly center below title */
@@ -51,12 +45,14 @@
 }
 
     .skills-stage.is-idle {
-        justify-content: center; /* pills in the middle of the screen */
+        justify-content: center;
+        /* visually lower the pills so they feel centered in the viewport */
+        padding-top: clamp(1.25rem, 6vh, 4rem);
     }
 
     .skills-stage.is-docked {
         justify-content: flex-start;
-        padding-top: 0.75rem; /* stays below title */
+        padding-top: 0.75rem;
     }
 
 .skills-rowDock {
@@ -66,7 +62,7 @@
     margin: 0 auto 1.2rem;
 }
 
-/* Pills in one horizontal line */
+/* Pills container */
 .skills-circles {
     display: flex;
     flex-wrap: nowrap;
@@ -96,16 +92,34 @@
     text-align: left;
     white-space: nowrap;
     box-shadow: none;
-    transition: background 200ms ease, border-color 200ms ease;
+    /* Remove default blue focus outline (and override global focus rules) */
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+    /* Smooth hover scale */
+    transform: translateZ(0);
+    transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
 
     .skills-circle:hover {
         background: rgba(255, 255, 255, 0.28);
+        transform: scale(1.04);
     }
 
     .skills-circle.is-active {
         background: rgba(255, 255, 255, 0.34);
         border-color: rgba(0, 0, 0, 0.18);
+    }
+
+    /* Hard override anything that styles generic button focus */
+    .skills-circle:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: rgba(0, 0, 0, 0.10);
+    }
+
+    /* Keep keyboard accessibility */
+    .skills-circle:focus-visible {
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.18) !important;
     }
 
 /* Inner badge */
@@ -132,27 +146,38 @@
 .skills-panel {
     position: relative;
     width: 100%;
-    min-height: 360px; /* was 320 */
+    min-height: 360px;
+    /* Give 2-column layouts room so they never overlap */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
-/* Smaller fixed card size so they do not look huge */
+/* Card sizing */
 :root {
-    --skill-card-w: 260px;
     --skill-card-h: 78px;
 }
 
+/* Destination slots + cards overlay use the same responsive grid */
 .skills-grid,
 .skills-dealLayer {
     display: grid;
-    grid-template-columns: repeat(2, var(--skill-card-w));
+    /* Prevent overlap: columns cannot shrink below 280px */
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    /* clear separation between columns */
+    column-gap: 1.5rem;
+    row-gap: 0.9rem;
     justify-content: center;
-    gap: 0.9rem;
+    align-items: start;
 }
 
+    /* If last item is alone, center it and cap width */
     .skills-dealLayer > .skills-card:last-child:nth-child(odd),
     .skills-grid > .skills-slot:last-child:nth-child(odd) {
-        grid-column: 1 / -1; /* span both columns */
+        grid-column: 1 / -1;
         justify-self: center;
+        width: min(360px, 100%);
     }
 
 .skills-slot {
@@ -167,7 +192,7 @@
 
 /* Cards */
 .skills-card {
-    width: var(--skill-card-w);
+    width: 100%;
     height: var(--skill-card-h);
     border-radius: 14px;
     border: 1px solid rgba(0, 0, 0, 0.10);
@@ -177,6 +202,7 @@
     text-align: left;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }
 
 .skills-cardTitle {
@@ -213,20 +239,19 @@
     }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    :root {
-        --skill-card-w: min(360px, 100%);
-        --skill-card-h: 94px;
-    }
-
+/* Responsive:
+   Collapse to 1 column BEFORE overlap can occur */
+@media (max-width: 720px) {
     .skills-grid,
     .skills-dealLayer {
         grid-template-columns: 1fr;
     }
+}
 
-    .skills-card {
-        width: 100%;
+/* Keep your existing 900px tweaks too */
+@media (max-width: 900px) {
+    :root {
+        --skill-card-h: 94px;
     }
 
     .skills-circle {
@@ -244,4 +269,12 @@
     .skills-cardShine {
         animation: none;
     }
+
+    .skills-circle {
+        transition: background 200ms ease, border-color 200ms ease;
+    }
+
+        .skills-circle:hover {
+            transform: none;
+        }
 }

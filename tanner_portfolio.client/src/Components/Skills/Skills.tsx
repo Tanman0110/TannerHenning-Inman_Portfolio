@@ -302,6 +302,8 @@ export default function Skills() {
                                                 ? ({ duration: 0 } as const)
                                                 : ({ duration: 0.26, ease: [0.16, 1, 0.3, 1] as const } as const)
                                         }
+                                        whileHover={prefersReducedMotion ? undefined : { scale: 1.04 }}
+                                        whileTap={prefersReducedMotion ? undefined : { scale: 0.99 }}
                                     >
                                         <span className="skills-circleShort">{cat.short}</span>
                                         <span className="skills-circleLabel">{cat.label}</span>
