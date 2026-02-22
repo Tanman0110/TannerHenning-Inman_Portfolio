@@ -8,3 +8,240 @@
             var(--tone-2) 100% 
         );
 }
+
+/* Fill viewport so stage can truly center below title */
+.skills-inner {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    box-sizing: border-box;
+    padding-bottom: 5rem;
+}
+
+/* Title */
+.skills-titleWrap {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1.6rem;
+}
+
+.skills-title {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: -0.02em;
+}
+
+.skills-underline {
+    width: 90px;
+    height: 2px;
+    margin: 0.9rem auto 0;
+    background: var(--accent);
+    opacity: 0.9;
+}
+
+/* Stage */
+.skills-stage {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .skills-stage.is-idle {
+        justify-content: center; /* pills in the middle of the screen */
+    }
+
+    .skills-stage.is-docked {
+        justify-content: flex-start;
+        padding-top: 0.75rem; /* stays below title */
+    }
+
+.skills-rowDock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+}
+
+/* Pills in one horizontal line */
+.skills-circles {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.4rem;
+    scrollbar-width: none;
+}
+
+    .skills-circles::-webkit-scrollbar {
+        display: none;
+    }
+
+/* Pill button */
+.skills-circle {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    padding: 0.75rem 0.95rem;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: background 200ms ease, border-color 200ms ease;
+}
+
+    .skills-circle:hover {
+        background: rgba(255, 255, 255, 0.28);
+    }
+
+    .skills-circle.is-active {
+        background: rgba(255, 255, 255, 0.34);
+        border-color: rgba(0, 0, 0, 0.18);
+    }
+
+/* Inner badge */
+.skills-circleShort {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: var(--tone-0);
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
+.skills-circleLabel {
+    font-size: 0.92rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+/* Panel */
+.skills-panel {
+    position: relative;
+    width: 100%;
+    min-height: 360px; /* was 320 */
+}
+
+/* Smaller fixed card size so they do not look huge */
+:root {
+    --skill-card-w: 260px;
+    --skill-card-h: 78px;
+}
+
+.skills-grid,
+.skills-dealLayer {
+    display: grid;
+    grid-template-columns: repeat(2, var(--skill-card-w));
+    justify-content: center;
+    gap: 0.9rem;
+}
+
+    .skills-dealLayer > .skills-card:last-child:nth-child(odd),
+    .skills-grid > .skills-slot:last-child:nth-child(odd) {
+        grid-column: 1 / -1; /* span both columns */
+        justify-self: center;
+    }
+
+.skills-slot {
+    height: var(--skill-card-h);
+}
+
+.skills-dealLayer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Cards */
+.skills-card {
+    width: var(--skill-card-w);
+    height: var(--skill-card-h);
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
+    padding: 0.9rem 1rem;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.skills-cardTitle {
+    font-size: 1.0rem;
+    letter-spacing: 0.06em;
+    font-weight: 650;
+    margin-bottom: 0.25rem;
+}
+
+.skills-cardDetail {
+    font-size: 0.93rem;
+    line-height: 1.35;
+    opacity: 0.85;
+}
+
+/* Shine sweep */
+.skills-cardShine {
+    position: absolute;
+    inset: -40% -60%;
+    background: linear-gradient( 120deg, transparent 35%, rgba(255, 255, 255, 0.35) 45%, transparent 55% );
+    transform: translateX(-35%) rotate(10deg);
+    animation: shine 650ms ease-out 1;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-35%) rotate(10deg);
+    }
+
+    to {
+        transform: translateX(35%) rotate(10deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    :root {
+        --skill-card-w: min(360px, 100%);
+        --skill-card-h: 94px;
+    }
+
+    .skills-grid,
+    .skills-dealLayer {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-card {
+        width: 100%;
+    }
+
+    .skills-circle {
+        grid-template-columns: 46px 1fr;
+    }
+
+    .skills-circleShort {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .skills-cardShine {
+        animation: none;
+    }
+}
