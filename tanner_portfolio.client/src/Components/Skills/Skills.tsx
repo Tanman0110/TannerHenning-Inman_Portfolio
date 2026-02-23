@@ -188,7 +188,7 @@ export default function Skills() {
     const rowAnimate = phase === "idle" ? { y: 0 } : { y: dockY };
     const rowTransition = prefersReducedMotion
         ? { duration: 0 }
-        : { duration: 1.15, ease: [0.16, 1, 0.3, 1] as const };
+        : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const };
 
     const cardInitial = (i: number, v: { dx: number; dy: number }) => ({
         opacity: 0,
