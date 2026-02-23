@@ -109,7 +109,7 @@ export default function Experience() {
                         className="experience-btn"
                         onClick={handleScrollToContact}
                     >
-                        My Contact
+                        Contact Me
                     </a>
                 </div>
             </div>
