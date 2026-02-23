@@ -1,15 +1,12 @@
 .skills {
-    background: radial-gradient( ellipse 260% 120% at 50% 155%, var(--tone-3) 0%, var(--tone-3) 62%, var(--tone-2) 88%, var(--tone-2) 100% );
     scroll-margin-top: 95px;
 }
 
-/* Fill viewport so stage can truly center below title */
 .skills-inner {
     width: min(1100px, 100%);
     margin: 0 auto;
     min-height: 100svh;
     display: grid;
-    /* ✅ change this */
     grid-template-rows: auto 1fr auto;
     box-sizing: border-box;
     padding-bottom: 2.5rem;
@@ -43,14 +40,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* ✅ ensures it uses the 1fr row */
     min-height: 0;
     z-index: 0;
 }
 
     .skills-stage.is-idle {
         justify-content: center;
-        /* visually lower the pills so they feel centered in the viewport */
         padding-top: clamp(6rem, 16vh, 9rem);
     }
 
@@ -76,7 +71,6 @@
     justify-content: center;
     align-items: center;
     overflow-x: auto;
-    /* ADD SIDE PADDING */
     padding: 0.25rem 1.5rem 0.4rem;
     scrollbar-width: none;
 }
@@ -99,10 +93,8 @@
     text-align: left;
     white-space: nowrap;
     box-shadow: none;
-    /* Remove default blue focus outline (and override global focus rules) */
     outline: none !important;
     -webkit-tap-highlight-color: transparent;
-    /* Smooth hover scale */
     transform: translateZ(0);
     transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
@@ -117,14 +109,12 @@
         border-color: rgba(0, 0, 0, 0.18);
     }
 
-    /* Hard override anything that styles generic button focus */
     .skills-circle:focus {
         outline: none !important;
         box-shadow: none !important;
         border-color: rgba(0, 0, 0, 0.10);
     }
 
-    /* Keep keyboard accessibility */
     .skills-circle:focus-visible {
         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.18) !important;
     }
@@ -167,8 +157,6 @@
     --skill-card-h: 78px;
 }
 
-/* Destination slots + cards overlay use the same responsive grid */
-/* Destination slots + cards overlay use the same responsive grid */
 .skills-grid,
 .skills-dealLayer {
     display: grid;
@@ -177,12 +165,10 @@
     row-gap: 0.9rem;
     justify-content: center;
     align-items: start;
-    /* ✅ NEW: prevent row stretching + keep consistent spacing */
     align-content: start;
     grid-auto-rows: var(--skill-card-h);
 }
 
-    /* Slots (these are always all present, so centering the last odd slot is stable) */
     .skills-grid > .skills-slot:last-child:nth-child(odd) {
         grid-column: 1 / -1;
         justify-self: center;
@@ -199,12 +185,6 @@
     pointer-events: none;
 }
 
-    /*
-  IMPORTANT:
-  Only center the "lonely last card" AFTER the deal is complete.
-  Otherwise, as dealtCount changes, "last-child" changes and previously placed
-  cards jump positions (the behavior you’re seeing).
-*/
     .skills-dealLayer.is-complete > .skills-card:last-child:nth-child(odd) {
         grid-column: 1 / -1;
         justify-self: center;
@@ -265,14 +245,13 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-decoration: none;
-    background: var(--accent); /* your accent color */
-    color: var(--tone-0); /* button text color */
+    background: var(--accent); 
+    color: var(--tone-0); 
     border: none;
     cursor: pointer;
     transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
-    /* Prevent blue link styles */
     .skills-btn:visited,
     .skills-btn:active,
     .skills-btn:hover {
@@ -286,7 +265,6 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
-    /* Custom focus styling (accessible but on-brand) */
     .skills-btn:focus {
         outline: none;
     }
@@ -306,15 +284,13 @@
     }
 }
 
-/* Responsive:
-   Collapse to 1 column BEFORE overlap can occur */
+/* Responsive: */
 @media (max-width: 720px) {
     .skills-grid,
     .skills-dealLayer {
         grid-template-columns: 1fr;
     }
 
-        /* When 1-column, centering rule isn’t needed */
         .skills-dealLayer.is-complete > .skills-card:last-child:nth-child(odd),
         .skills-grid > .skills-slot:last-child:nth-child(odd) {
             grid-column: auto;
@@ -323,7 +299,6 @@
         }
 }
 
-/* Keep your existing 900px tweaks too */
 @media (max-width: 900px) {
     :root {
         --skill-card-h: 94px;

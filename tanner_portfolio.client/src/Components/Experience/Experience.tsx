@@ -62,25 +62,24 @@ export default function Experience() {
     return (
         <section id="experience" className="section experience">
             <div className="experience-inner">
-                {/* Top title */}
+
                 <div className="experience-titleWrap">
                     <h2 className="experience-title">My Experience</h2>
                     <div className="experience-underline" aria-hidden="true" />
                 </div>
 
-                {/* Content */}
+
                 <div className="experience-content">
-                    {/* Company / Date row */}
+
                     <div className="experience-headRow">
                         <div className="experience-company">{COMPANY}</div>
                         <div className="experience-date">{RANGE}</div>
                     </div>
 
-                    {/* Rotations list */}
                     <div className="experience-rotations">
                         {ROTATIONS.map((r, idx) => (
                             <div key={`${r.title}-${idx}`} className="experience-rotation">
-                                {/* ✅ title left, date right */}
+         
                                 <div className="experience-rotationHead">
                                     <div className="experience-rotationTitle">{r.title}</div>
                                     <div className="experience-rotationDate">{r.range}</div>
@@ -102,7 +101,6 @@ export default function Experience() {
                     </div>
                 </div>
 
-                {/* Bottom button */}
                 <div className="experience-btnWrap">
                     <a
                         href="#contact"

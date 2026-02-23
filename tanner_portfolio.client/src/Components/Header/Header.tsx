@@ -177,7 +177,6 @@ export default function Header() {
                             className={`navLink ${isActive ? "active" : ""} ${enterClass} ${exitClass}`}
                             onClick={(e) => {
                                 e.preventDefault();
-                                // same smooth scroll as before, now from util:
                                 smoothScrollToId(l.id, HEADER_OFFSET, setProgress);
                             }}
                         >
