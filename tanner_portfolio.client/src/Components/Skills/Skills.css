@@ -9,9 +9,10 @@
     margin: 0 auto;
     min-height: 100svh;
     display: grid;
-    grid-template-rows: auto 1fr;
+    /* ✅ change this */
+    grid-template-rows: auto 1fr auto;
     box-sizing: border-box;
-    padding-bottom: 5rem;
+    padding-bottom: 2.5rem;
 }
 
 /* Title */
@@ -42,6 +43,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* ✅ ensures it uses the 1fr row */
+    min-height: 0;
 }
 
     .skills-stage.is-idle {
@@ -70,7 +73,8 @@
     justify-content: center;
     align-items: center;
     overflow-x: auto;
-    padding: 0.25rem 0 0.4rem;
+    /* ADD SIDE PADDING */
+    padding: 0.25rem 1.5rem 0.4rem;
     scrollbar-width: none;
 }
 
@@ -160,20 +164,21 @@
 }
 
 /* Destination slots + cards overlay use the same responsive grid */
+/* Destination slots + cards overlay use the same responsive grid */
 .skills-grid,
 .skills-dealLayer {
     display: grid;
-    /* Prevent overlap: columns cannot shrink below 280px */
     grid-template-columns: repeat(2, minmax(280px, 1fr));
-    /* clear separation between columns */
     column-gap: 1.5rem;
     row-gap: 0.9rem;
     justify-content: center;
     align-items: start;
+    /* ✅ NEW: prevent row stretching + keep consistent spacing */
+    align-content: start;
+    grid-auto-rows: var(--skill-card-h);
 }
 
-    /* If last item is alone, center it and cap width */
-    .skills-dealLayer > .skills-card:last-child:nth-child(odd),
+    /* Slots (these are always all present, so centering the last odd slot is stable) */
     .skills-grid > .skills-slot:last-child:nth-child(odd) {
         grid-column: 1 / -1;
         justify-self: center;
@@ -189,6 +194,18 @@
     inset: 0;
     pointer-events: none;
 }
+
+    /*
+  IMPORTANT:
+  Only center the "lonely last card" AFTER the deal is complete.
+  Otherwise, as dealtCount changes, "last-child" changes and previously placed
+  cards jump positions (the behavior you’re seeing).
+*/
+    .skills-dealLayer.is-complete > .skills-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(360px, 100%);
+    }
 
 /* Cards */
 .skills-card {
@@ -227,7 +244,7 @@
     animation: shine 650ms ease-out 1;
     pointer-events: none;
     opacity: 0.85;
-}
+}S
 
 @keyframes shine {
     from {
@@ -246,6 +263,14 @@
     .skills-dealLayer {
         grid-template-columns: 1fr;
     }
+
+        /* When 1-column, centering rule isn’t needed */
+        .skills-dealLayer.is-complete > .skills-card:last-child:nth-child(odd),
+        .skills-grid > .skills-slot:last-child:nth-child(odd) {
+            grid-column: auto;
+            justify-self: stretch;
+            width: 100%;
+        }
 }
 
 /* Keep your existing 900px tweaks too */
