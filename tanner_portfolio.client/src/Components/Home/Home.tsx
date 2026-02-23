@@ -3,9 +3,8 @@ import "./Home.css";
 import React from "react";
 import { smoothScrollToId } from "../../Utils/SmoothScroll";
 
-const HEADER_OFFSET = 85;
-
 export default function Home() {
+    const HEADER_OFFSET = 85;
     const handleScrollToAbout = (
         e: React.MouseEvent<HTMLAnchorElement>
     ) => {
