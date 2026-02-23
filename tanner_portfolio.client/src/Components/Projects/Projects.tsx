@@ -15,13 +15,12 @@ export default function Projects() {
     return (
         <section id="projects" className="section projects">
             <div className="projects-inner">
-                {/* Top title */}
+
                 <div className="projects-titleWrap">
                     <h2 className="projects-title">My Projects</h2>
                     <div className="projects-underline" aria-hidden="true" />
                 </div>
 
-                {/* Main stage */}
                 <div className="projects-stage" role="status" aria-label="Projects under construction">
                     <div className="projects-iconWrap" aria-hidden="true">
                         <Construction className="projects-icon" />
@@ -33,12 +32,12 @@ export default function Projects() {
                     </p>
                 </div>
 
-                {/* Bottom button */}
                 <div className="skills-btnWrap">
                     <a href="#experience" className="projects-btn" onClick={handleScrollToExperience}>
                         My Experience
                     </a>
                 </div>
+
             </div>
         </section>
     );

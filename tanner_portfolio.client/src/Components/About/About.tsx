@@ -16,15 +16,13 @@ export default function About() {
     return (
         <section id="about" className="section about">
             <div className="about-inner">
-                {/* Top title */}
+
                 <div className="about-titleWrap">
                     <h2 className="about-title">Tanner Henning-Inman</h2>
                     <div className="about-underline" aria-hidden="true" />
                 </div>
 
-                {/* Main grid */}
                 <div className="about-grid">
-                    {/* LEFT COLUMN */}
                     <div className="about-left">
                         <div className="about-photoWrap">
                             <img
@@ -42,7 +40,6 @@ export default function About() {
                         </div>
                     </div>
 
-                    {/* RIGHT COLUMN */}
                     <div className="about-content">
                         <h3 className="about-kicker">About Me</h3>
 

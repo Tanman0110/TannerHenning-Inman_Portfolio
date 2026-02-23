@@ -1,5 +1,3 @@
-// src/Utilities/SmoothScroll.ts
-
 export function clamp01(n: number) {
     return Math.max(0, Math.min(1, n));
 }
@@ -8,10 +6,6 @@ export function easeOutCubic(t: number) {
     return 1 - Math.pow(1 - t, 3);
 }
 
-/**
- * Smooth scroll to a section id with the same behavior you had in Header.tsx.
- * Optionally updates a progress setter (for your header progress bar).
- */
 export function smoothScrollToId(
     id: string,
     offset: number,

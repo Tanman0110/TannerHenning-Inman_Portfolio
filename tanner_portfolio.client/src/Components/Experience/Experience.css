@@ -1,18 +1,3 @@
-.experience {
-    background: 
-        radial-gradient( 
-            ellipse 260% 120% at 50% 155%, 
-            var(--tone-5) 0%, 
-            var(--tone-5) 62%, 
-            var(--tone-4) 88%, 
-            var(--tone-4) 100% 
-        );
-}
-
-/* ===============================
-   MAIN LAYOUT
-   =============================== */
-
 .experience-inner {
     width: min(1100px, 100%);
     margin: 0 auto;
@@ -22,10 +7,6 @@
     box-sizing: border-box;
     padding-bottom: 2.75rem;
 }
-
-/* ===============================
-   SECTION TITLE
-   =============================== */
 
 .experience-titleWrap {
     text-align: center;
@@ -47,10 +28,6 @@
     opacity: 0.9;
 }
 
-/* ===============================
-   CONTENT WRAPPER
-   =============================== */
-
 .experience-content {
     width: min(900px, 100%);
     margin: 0 auto;
@@ -59,21 +36,15 @@
     text-align: left;
 }
 
-/* A consistent right column width for ALL dates */
 :root {
     --exp-date-col: 190px;
 }
-
-/* ===============================
-   COMPANY HEADER (UPMC ROW)
-   =============================== */
 
 .experience-headRow {
     display: grid;
     grid-template-columns: 1fr var(--exp-date-col);
     align-items: baseline;
     gap: 1rem;
-    /* Make it feel like a header */
     padding-bottom: 1.1rem;
     margin-bottom: 1.4rem;
     border-bottom: 2px solid rgba(0, 0, 0, 0.22);
@@ -96,10 +67,6 @@
     opacity: 0.7;
 }
 
-/* ===============================
-   ROTATIONS
-   =============================== */
-
 .experience-rotations {
     display: grid;
     gap: 1.8rem;
@@ -110,7 +77,6 @@
     gap: 0.6rem;
 }
 
-/* Rotation header row (title + date) */
 .experience-rotationHead {
     display: grid;
     grid-template-columns: 1fr var(--exp-date-col);
@@ -118,14 +84,12 @@
     gap: 1rem;
 }
 
-/* Rotation title */
 .experience-rotationTitle {
     font-weight: 600;
     opacity: 0.95;
     font-size: clamp(1.12rem, 1.05vw, 1.22rem);
 }
 
-/* Rotation date */
 .experience-rotationDate {
     justify-self: end;
     text-align: right;
@@ -135,10 +99,6 @@
     text-transform: uppercase;
     opacity: 0.6;
 }
-
-/* ===============================
-   BULLETS
-   =============================== */
 
 .experience-bullets {
     margin: 0;
@@ -160,10 +120,6 @@
         font-size: 0.9em;
     }
 
-/* ===============================
-   DIVIDER BETWEEN ROTATIONS
-   =============================== */
-
 .experience-divider {
     margin-top: 1.35rem;
     height: 2px;
@@ -171,10 +127,6 @@
     background: rgba(0, 0, 0, 0.22);
     border-radius: 999px;
 }
-
-/* ===============================
-   BUTTON
-   =============================== */
 
 .experience-btnWrap {
     display: flex;
@@ -217,10 +169,6 @@
         outline: 2px solid rgba(0, 0, 0, 0.35);
         outline-offset: 4px;
     }
-
-/* ===============================
-   RESPONSIVE
-   =============================== */
 
 @media (max-width: 900px) {
     :root {
