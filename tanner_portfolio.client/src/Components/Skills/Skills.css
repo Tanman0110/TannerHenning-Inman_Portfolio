@@ -1,10 +1,355 @@
 .skills {
-    background: 
-        radial-gradient( 
-            ellipse 260% 120% at 50% 155%, 
-            var(--tone-3) 0%, 
-            var(--tone-3) 62%, 
-            var(--tone-2) 88%, 
-            var(--tone-2) 100% 
-        );
+    background: radial-gradient( ellipse 260% 120% at 50% 155%, var(--tone-3) 0%, var(--tone-3) 62%, var(--tone-2) 88%, var(--tone-2) 100% );
+    scroll-margin-top: 95px;
+}
+
+/* Fill viewport so stage can truly center below title */
+.skills-inner {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    min-height: 100svh;
+    display: grid;
+    /* ✅ change this */
+    grid-template-rows: auto 1fr auto;
+    box-sizing: border-box;
+    padding-bottom: 2.5rem;
+}
+
+/* Title */
+.skills-titleWrap {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1.6rem;
+}
+
+.skills-title {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: -0.02em;
+}
+
+.skills-underline {
+    width: 90px;
+    height: 2px;
+    margin: 0.9rem auto 0;
+    background: var(--accent);
+    opacity: 0.9;
+}
+
+/* Stage */
+.skills-stage {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* ✅ ensures it uses the 1fr row */
+    min-height: 0;
+    z-index: 0;
+}
+
+    .skills-stage.is-idle {
+        justify-content: center;
+        /* visually lower the pills so they feel centered in the viewport */
+        padding-top: clamp(6rem, 16vh, 9rem);
+    }
+
+    .skills-stage.is-docked {
+        justify-content: flex-start;
+        padding-top: 0.75rem;
+    }
+
+.skills-rowDock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Pills container */
+.skills-circles {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    /* ADD SIDE PADDING */
+    padding: 0.25rem 1.5rem 0.4rem;
+    scrollbar-width: none;
+}
+
+    .skills-circles::-webkit-scrollbar {
+        display: none;
+    }
+
+/* Pill button */
+.skills-circle {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    padding: 0.75rem 0.95rem;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    box-shadow: none;
+    /* Remove default blue focus outline (and override global focus rules) */
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+    /* Smooth hover scale */
+    transform: translateZ(0);
+    transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+    .skills-circle:hover {
+        background: rgba(255, 255, 255, 0.28);
+        transform: scale(1.04);
+    }
+
+    .skills-circle.is-active {
+        background: rgba(255, 255, 255, 0.34);
+        border-color: rgba(0, 0, 0, 0.18);
+    }
+
+    /* Hard override anything that styles generic button focus */
+    .skills-circle:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: rgba(0, 0, 0, 0.10);
+    }
+
+    /* Keep keyboard accessibility */
+    .skills-circle:focus-visible {
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.18) !important;
+    }
+
+/* Inner badge */
+.skills-circleShort {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: var(--tone-0);
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
+.skills-circleLabel {
+    font-size: 0.92rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+/* Panel */
+.skills-panel {
+    position: relative;
+    width: 100%;
+    min-height: 360px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Card sizing */
+:root {
+    --skill-card-h: 78px;
+}
+
+/* Destination slots + cards overlay use the same responsive grid */
+/* Destination slots + cards overlay use the same responsive grid */
+.skills-grid,
+.skills-dealLayer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 0.9rem;
+    justify-content: center;
+    align-items: start;
+    /* ✅ NEW: prevent row stretching + keep consistent spacing */
+    align-content: start;
+    grid-auto-rows: var(--skill-card-h);
+}
+
+    /* Slots (these are always all present, so centering the last odd slot is stable) */
+    .skills-grid > .skills-slot:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(360px, 100%);
+    }
+
+.skills-slot {
+    height: var(--skill-card-h);
+}
+
+.skills-dealLayer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+    /*
+  IMPORTANT:
+  Only center the "lonely last card" AFTER the deal is complete.
+  Otherwise, as dealtCount changes, "last-child" changes and previously placed
+  cards jump positions (the behavior you’re seeing).
+*/
+    .skills-dealLayer.is-complete > .skills-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(360px, 100%);
+    }
+
+/* Cards */
+.skills-card {
+    width: 100%;
+    height: var(--skill-card-h);
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
+    padding: 0.9rem 1rem;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.skills-cardTitle {
+    font-size: 1.0rem;
+    letter-spacing: 0.06em;
+    font-weight: 650;
+    margin-bottom: 0.25rem;
+}
+
+.skills-cardDetail {
+    font-size: 0.93rem;
+    line-height: 1.35;
+    opacity: 0.85;
+}
+
+/* Shine sweep */
+.skills-cardShine {
+    position: absolute;
+    inset: -40% -60%;
+    background: linear-gradient( 120deg, transparent 35%, rgba(255, 255, 255, 0.35) 45%, transparent 55% );
+    transform: translateX(-35%) rotate(10deg);
+    animation: shine 650ms ease-out 1;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.skills-btnWrap {
+    margin-top: auto !important;
+    padding-bottom: 7rem !important;
+    position: relative;
+    z-index: 10;
+}
+
+.skills-btn {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--accent); /* your accent color */
+    color: var(--tone-0); /* button text color */
+    border: none;
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+    /* Prevent blue link styles */
+    .skills-btn:visited,
+    .skills-btn:active,
+    .skills-btn:hover {
+        color: var(--tone-0);
+        text-decoration: none;
+    }
+
+    /* Hover effect */
+    .skills-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Custom focus styling (accessible but on-brand) */
+    .skills-btn:focus {
+        outline: none;
+    }
+
+    .skills-btn:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.35);
+        outline-offset: 4px;
+    }
+
+@keyframes shine {
+    from {
+        transform: translateX(-35%) rotate(10deg);
+    }
+
+    to {
+        transform: translateX(35%) rotate(10deg);
+    }
+}
+
+/* Responsive:
+   Collapse to 1 column BEFORE overlap can occur */
+@media (max-width: 720px) {
+    .skills-grid,
+    .skills-dealLayer {
+        grid-template-columns: 1fr;
+    }
+
+        /* When 1-column, centering rule isn’t needed */
+        .skills-dealLayer.is-complete > .skills-card:last-child:nth-child(odd),
+        .skills-grid > .skills-slot:last-child:nth-child(odd) {
+            grid-column: auto;
+            justify-self: stretch;
+            width: 100%;
+        }
+}
+
+/* Keep your existing 900px tweaks too */
+@media (max-width: 900px) {
+    :root {
+        --skill-card-h: 94px;
+    }
+
+    .skills-circle {
+        grid-template-columns: 46px 1fr;
+    }
+
+    .skills-circleShort {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .skills-cardShine {
+        animation: none;
+    }
+
+    .skills-circle {
+        transition: background 200ms ease, border-color 200ms ease;
+    }
+
+        .skills-circle:hover {
+            transform: none;
+        }
 }
