@@ -15,3 +15,316 @@
         ),
         var(--tone-5);
 }
+
+/* Layout */
+.contact-inner {
+    width: min(820px, 96vw);
+    margin: 0 auto;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    box-sizing: border-box;
+    padding-bottom: 3.25rem;
+    align-content: start;
+}
+
+.contact-titleWrap {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.contact-title {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: -0.02em;
+}
+
+.contact-underline {
+    width: 90px;
+    height: 2px;
+    margin: 0.4rem auto 0;
+    background: var(--accent);
+    opacity: 0.9;
+}
+
+.contact-stage {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    margin-top: 1rem;
+    padding: 0 1.25rem 1.5rem;
+    gap: 0.5rem;
+}
+
+.contact-hint {
+    margin: 0;
+    opacity: 0.72;
+    text-align: center;
+    max-width: 62ch;
+    line-height: 1.5;
+}
+
+/* -----------------------------
+   Psycho-inspired card
+------------------------------ */
+
+.psyCard {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    perspective: 1200px;
+}
+
+/* Business card proportions */
+.psyCard-inner {
+    width: min(750px, 96vw);
+    aspect-ratio: 1.95 / 1;
+    position: relative;
+    display: block;
+    transform-style: preserve-3d;
+    transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+    .psyCard-inner.isFlipped {
+        transform: rotateY(180deg);
+    }
+
+.psyFace {
+    position: absolute;
+    inset: 0;
+    border-radius: 0px;
+    backface-visibility: hidden;
+    /* Stock */
+    background: #f2efe7;
+    color: rgba(30, 28, 26, 0.82);
+    /* Paper edge */
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    /* Depth */
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22), 0 2px 0 rgba(0, 0, 0, 0.05);
+    /* Subtle paper grain + sheen */
+    background-image: radial-gradient(circle at 15% 18%, rgba(0, 0, 0, 0.035), transparent 46%), radial-gradient(circle at 85% 72%, rgba(0, 0, 0, 0.03), transparent 48%), repeating-linear-gradient( 135deg, rgba(0, 0, 0, 0.016) 0px, rgba(0, 0, 0, 0.016) 1px, rgba(255, 255, 255, 0) 3px, rgba(255, 255, 255, 0) 7px );
+    background-blend-mode: multiply;
+}
+
+/* Front */
+.psyFront {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    /* ✅ Slightly roomier overall */
+    padding: clamp(1.25rem, 2.6vw, 1.75rem) clamp(1.65rem, 3.4vw, 2.45rem);
+}
+
+/* ✅ Bateman-style top line: left phone, right firm, no middle column */
+.psyTopRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 1rem;
+    /* ✅ Push the top row down further from the top edge */
+    margin-top: 0.55rem;
+}
+
+.psyTopLeft {
+    font-family: "Garamond", "Times New Roman", serif;
+    font-size: clamp(0.98rem, 1.35vw, 1.16rem);
+    letter-spacing: 0.06em;
+    opacity: 0.72;
+    white-space: nowrap;
+    justify-self: start;
+    text-align: left;
+}
+
+.psyTopRight {
+    text-align: right;
+    display: grid;
+    gap: 0.05rem;
+    justify-items: end;
+    justify-self: end;
+}
+
+.psyFirm {
+    font-family: "Garamond", "Times New Roman", serif;
+    font-size: clamp(1.06rem, 1.45vw, 1.28rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.86;
+    white-space: nowrap;
+}
+
+.psyDept {
+    font-family: "Garamond", "Times New Roman", serif;
+    font-size: clamp(0.86rem, 1.08vw, 1.03rem);
+    letter-spacing: 0.10em;
+    opacity: 0.58;
+    white-space: nowrap;
+}
+
+.psyCenter {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.18rem;
+}
+
+.psyName {
+    font-family: "Garamond", "Times New Roman", serif;
+    font-size: clamp(1.65rem, 2.55vw, 2.1rem);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.88;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45), 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.psyTitle {
+    font-family: "Garamond", "Times New Roman", serif;
+    font-size: clamp(1.08rem, 1.45vw, 1.28rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.68;
+}
+
+.psyBottom {
+    font-family: "Garamond", "Times New Roman", serif;
+    font-size: clamp(0.88rem, 1.05vw, 1.04rem);
+    letter-spacing: 0.06em;
+    opacity: 0.62;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: end;
+}
+
+/* Back */
+.psyBack {
+    transform: rotateY(180deg);
+    padding: clamp(1.3rem, 2.4vw, 1.7rem) clamp(1.5rem, 3.2vw, 2.2rem);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 0.9rem;
+}
+
+.psyBackHeader {
+    font-family: "Garamond", "Times New Roman", serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.82;
+    font-size: clamp(1.05rem, 1.55vw, 1.25rem);
+}
+
+.psyBackRule {
+    height: 1px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.psyLinks {
+    display: grid;
+    gap: 0.7rem;
+    align-content: start;
+}
+
+.psyLink {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 0.7rem;
+    align-items: center;
+    text-decoration: none;
+    color: rgba(30, 28, 26, 0.82);
+    padding: 0.55rem 0.65rem;
+    border-radius: 10px;
+    transition: transform 180ms ease, background 180ms ease;
+}
+
+    .psyLink:hover {
+        background: rgba(0, 0, 0, 0.04);
+        transform: translateY(-1px);
+    }
+
+    .psyLink:active {
+        transform: translateY(0);
+    }
+
+.psyIcon {
+    display: grid;
+    place-items: center;
+    opacity: 0.85;
+}
+
+.psyLinkText {
+    font-family: "Garamond", "Times New Roman", serif;
+    letter-spacing: 0.08em;
+    opacity: 0.72;
+    font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+}
+
+/* hint line */
+.psyHint {
+    justify-self: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    margin-top: 0.6rem;
+}
+
+/* Accessible focus */
+.psyCard:focus-visible .psyFace {
+    outline: 2px solid rgba(0, 0, 0, 0.35);
+    outline-offset: 6px;
+}
+
+.contact-btnWrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    padding-bottom: 6.25rem;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--accent);
+    color: var(--tone-0);
+    border: none;
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+    .contact-btn:visited,
+    .contact-btn:active,
+    .contact-btn:hover {
+        color: var(--tone-0);
+        text-decoration: none;
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-btn:focus {
+        outline: none;
+    }
+
+    .contact-btn:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.35);
+        outline-offset: 4px;
+    }
+
+/* Mobile: allow bottom line to wrap instead of ellipsis */
+@media (max-width: 520px) {
+    .psyBottom {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+}
