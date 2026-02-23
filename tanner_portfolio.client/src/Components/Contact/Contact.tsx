@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
-import "../Section.css";
-import "./Contact.css";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { smoothScrollToId } from "../../Utils/SmoothScroll";
+import "../Section.css";
+import "./Contact.css";
 
 type ContactLink = {
     kind: "email" | "linkedin" | "github";
@@ -14,15 +15,23 @@ export default function Contact() {
     const [flipped, setFlipped] = useState(false);
     const reduceMotion = useReducedMotion();
 
+    const HEADER_OFFSET = 85;
+    const handleScrollToHome = (
+        e: React.MouseEvent<HTMLAnchorElement>
+    ) => {
+        e.preventDefault();
+        smoothScrollToId("home", HEADER_OFFSET);
+    };
+
     const front = useMemo(
         () => ({
-            topLeft: "212 555 6342",
-            topRightLine1: "PIERCE & PIERCE",
-            topRightLine2: "Mergers and Acquisitions",
-            name: "YOUR NAME",
-            title: "Software Engineer",
+            topLeft: "304 290 4028",
+            topRightLine1: "HENNING & INMAN",
+            topRightLine2: "Software and Engineering",
+            name: "Tanner Henning-Inman",
+            title: "Full Stack Developer",
             bottom:
-                "358 Exchange Place New York, N.Y. 10099  FAX 212 555 6390  TELEX 10 4534",
+                "358 Exchange Place West Virginia, W.V. 10099  FAX 212 555 6390  TELEX 10 4534",
         }),
         []
     );
@@ -31,13 +40,13 @@ export default function Contact() {
         () => [
             {
                 kind: "email",
-                label: "your.email@domain.com",
-                href: "mailto:your.email@domain.com",
+                label: "thenn0110@gmail.com",
+                href: "mailto:thenn0110@gmail.com",
             },
             {
                 kind: "linkedin",
-                label: "linkedin.com/in/your-handle",
-                href: "https://www.linkedin.com/in/your-handle",
+                label: "https://www.linkedin.com/in/tanner-henning-inman-8203761b6/",
+                href: "https://www.linkedin.com/in/tanner-henning-inman-8203761b6/",
             },
             {
                 kind: "github",
@@ -143,14 +152,19 @@ export default function Contact() {
                                     ))}
                                 </span>
 
-                                <span className="psyHint">Click to flip back</span>
+                                <span className="psyHint">Click to flip</span>
                             </span>
                         </motion.span>
                     </button>
-
-                    <p className="contact-hint">
-                        Replace placeholders with your info.
-                    </p>
+                </div>
+                <div className="contact-btnWrap">
+                    <a
+                        href="#home"
+                        className="contact-btn"
+                        onClick={handleScrollToHome}
+                    >
+                        Back To Top
+                    </a>
                 </div>
             </div>
         </section>
