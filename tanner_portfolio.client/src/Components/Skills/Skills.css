@@ -45,12 +45,13 @@
     align-items: center;
     /* ✅ ensures it uses the 1fr row */
     min-height: 0;
+    z-index: 0;
 }
 
     .skills-stage.is-idle {
         justify-content: center;
         /* visually lower the pills so they feel centered in the viewport */
-        padding-top: clamp(1.25rem, 6vh, 4rem);
+        padding-top: clamp(6rem, 16vh, 9rem);
     }
 
     .skills-stage.is-docked {
@@ -63,6 +64,8 @@
     display: flex;
     justify-content: center;
     margin: 0 auto 1.2rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Pills container */
@@ -151,11 +154,12 @@
     position: relative;
     width: 100%;
     min-height: 360px;
-    /* Give 2-column layouts room so they never overlap */
     max-width: 900px;
     margin: 0 auto;
     padding: 0 1rem;
     box-sizing: border-box;
+    flex: 1;
+    min-height: 0;
 }
 
 /* Card sizing */
@@ -244,7 +248,53 @@
     animation: shine 650ms ease-out 1;
     pointer-events: none;
     opacity: 0.85;
-}S
+}
+
+.skills-btnWrap {
+    margin-top: auto !important;
+    padding-bottom: 7rem !important;
+    position: relative;
+    z-index: 10;
+}
+
+.skills-btn {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--accent); /* your accent color */
+    color: var(--tone-0); /* button text color */
+    border: none;
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+    /* Prevent blue link styles */
+    .skills-btn:visited,
+    .skills-btn:active,
+    .skills-btn:hover {
+        color: var(--tone-0);
+        text-decoration: none;
+    }
+
+    /* Hover effect */
+    .skills-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Custom focus styling (accessible but on-brand) */
+    .skills-btn:focus {
+        outline: none;
+    }
+
+    .skills-btn:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.35);
+        outline-offset: 4px;
+    }
 
 @keyframes shine {
     from {

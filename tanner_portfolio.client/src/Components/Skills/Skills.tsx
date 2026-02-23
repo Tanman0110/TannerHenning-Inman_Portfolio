@@ -55,6 +55,16 @@ function sleep(ms: number) {
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Skills() {
+
+    const HEADER_OFFSET = 85;
+
+    const handleScrollToProjects = (
+        e: React.MouseEvent<HTMLAnchorElement>
+    ) => {
+        e.preventDefault();
+        smoothScrollToId("projects", HEADER_OFFSET);
+    };
+
     const prefersReducedMotion = useReducedMotion();
 
     const [phase, setPhase] = useState<Phase>("idle");
@@ -188,7 +198,7 @@ export default function Skills() {
     const rowAnimate = phase === "idle" ? { y: 0 } : { y: dockY };
     const rowTransition = prefersReducedMotion
         ? { duration: 0 }
-        : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const };
+        : { duration: .5, ease: [0.16, 1, 0.3, 1] as const };
 
     const cardInitial = (i: number, v: { dx: number; dy: number }) => ({
         opacity: 0,
@@ -378,6 +388,11 @@ export default function Skills() {
                                 )}
                         </AnimatePresence>
                     </div>
+                </div>
+                <div className="skills-btnWrap">
+                    <a href="#projects" className="skills-btn" onClick={handleScrollToProjects}>
+                        View My Projects
+                    </a>
                 </div>
             </div>
         </section>
