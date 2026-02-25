@@ -10,26 +10,15 @@ type Category = { id: string; label: string; short: string; items: SkillCard[] }
 const CATEGORIES: Category[] = [
     {
         id: "backend",
-        label: "Backend & Systems",
+        label: "Backend & Data",
         short: "BE",
         items: [
             { title: "ASP.NET Core", detail: "APIs, services, clean architecture" },
+            { title: "Entity Framework", detail: "ORM patterns, migrations, query design" },
             { title: "C#", detail: "Enterprise development + tooling" },
-            { title: "Entity Framework", detail: "ORM patterns, query design" },
-            { title: "SQL", detail: "Performance-minded querying" },
             { title: "Java / Python", detail: "Utilities, scripting, problem solving" },
-        ],
-    },
-    {
-        id: "security",
-        label: "Security & Automation",
-        short: "SEC",
-        items: [
-            { title: "CompTIA Security+", detail: "Security fundamentals" },
-            { title: "IAM", detail: "Provisioning + access workflows at scale" },
-            { title: "Network Security Automation", detail: "Firewall tooling + ops" },
-            { title: "SOC Work", detail: "Investigate + remediate events" },
-            { title: "KQL / ESQL", detail: "Query logs + integration flows" },
+            { title: "SQL Server (SSMS)", detail: "Experience working in SSMS for SQL Server workflows" },
+            { title: "MySQL", detail: "Relational DB fundamentals + practical querying" },
         ],
     },
     {
@@ -41,7 +30,19 @@ const CATEGORIES: Category[] = [
             { title: "Angular", detail: "Structured SPA development" },
             { title: "TypeScript", detail: "Typed UI + safer refactors" },
             { title: "JavaScript", detail: "Modern JS patterns" },
-            { title: "HTML/CSS", detail: "Responsive layouts + styling systems" },
+            { title: "HTML / CSS", detail: "Responsive layouts + styling systems" },
+        ],
+    },
+    {
+        id: "delivery",
+        label: "Delivery & Certifications",
+        short: "DX",
+        items: [
+            { title: "Agile / Scrum", detail: "Iterative delivery, ceremonies, sprint planning" },
+            { title: "DevOps Practices", detail: "CI/CD awareness, automation mindset, reliable delivery" },
+            { title: "Git", detail: "Branching, PR workflows, collaboration" },
+            { title: "Azure DevOps", detail: "Boards/work items + team delivery workflows" },
+            { title: "CompTIA Security+", detail: "Security fundamentals" },
         ],
     },
 ];
