@@ -1,2 +1,0 @@
-- Large space between components
--Add background theme (Sky to underground) showcasing birds, clouds, mountains, waterfall, river, animals, etc. Maybe dinosoar fossils for underground portion
