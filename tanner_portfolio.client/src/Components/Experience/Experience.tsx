@@ -19,27 +19,27 @@ const ROTATIONS: Rotation[] = [
         title: "Enterprise Data Integrations - Software Engineer",
         range: "Jul 2023 - Dec 2023",
         bullets: [
-            "Developed message router applications to support safe, secure transport of patient data across 9 electronic health records.",
-            "Improved message throughput by optimizing transformation pipelines.",
-            "Collaborated with cross-functional teams to ensure HL7/FHIR compliance."
+            "Created a Dead Letter Queue that reduced ticketing for on call personal by 50%",
+            "Revisited and revitalized old interfaces to handle more traffic",
+            "Created an Azure Data Explorer Dashboard to easily view and monitor messages accross all interfaces"
         ]
     },
     {
         title: "Network Security Automation - Software Engineer",
         range: "Jan 2024 - Jun 2024",
         bullets: [
-            "Built automation tools to help Network Security Operations complete firewall-related tasks more efficiently.",
-            "Reduced manual configuration time by implementing scripting workflows.",
-            "Created logging and monitoring utilities for automation reliability."
+            "Developed tool to search legacy Firewall Exception Data from RSAM post ServiceNow go live",
+            "Reworked Firewall Traffic monitoring tool backend to reduce search time from minutes to seconds",
+            "Upgraded angular versioning from v12 to v18 for all NetSec projects"
         ]
     },
     {
         title: "Identity Management Systems - Software Engineer",
         range: "Jul 2024 - Dec 2024",
         bullets: [
-            "Created an automation process for UPMC Bridges enabling access to a new EPIC instance for 100,000+ users.",
-            "Improved provisioning reliability through validation and audit logging.",
-            "Assisted in role-based access model refinement."
+            "Created an automation process to assign user training and approve users for access to EPIC once training was completed for over 100,000 employees",
+            "Reduced codebase by writing script to automatically transform HTML files into JSON and import into database to dynamically load webpages",
+            "Redesigned UI and backend services for 10+ year old tools to give a sleeker design, more rounded user experience, and responsive times"
         ]
     },
     {
