@@ -81,7 +81,7 @@ export default function Contact() {
         <section id="contact" className="section contact">
             <div className="contact-inner">
                 <div className="contact-titleWrap">
-                    <h2 className="contact-title">Contact</h2>
+                    <h2 className="contact-title">Contact Me</h2>
                     <div className="contact-underline" aria-hidden="true" />
                 </div>
 
@@ -133,7 +133,7 @@ export default function Contact() {
 
                             {/* BACK */}
                             <span className="psyFace psyBack">
-                                <span className="psyBackHeader">CONTACT</span>
+                                <span className="psyBackHeader">CONTACT INFORMATION</span>
                                 <span className="psyBackRule" aria-hidden="true" />
 
                                 <span className="psyLinks">
