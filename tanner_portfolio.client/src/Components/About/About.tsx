@@ -1,17 +1,8 @@
 import "../Section.css";
 import "./About.css";
-import { smoothScrollToId } from "../../Utils/SmoothScroll";
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 
 export default function About() {
-
-    const HEADER_OFFSET = 85;
-
-    const handleScrollToSkills = (
-        e: React.MouseEvent<HTMLAnchorElement>
-    ) => {
-        e.preventDefault();
-        smoothScrollToId("skills", HEADER_OFFSET);
-    };
 
     return (
         <section id="about" className="section about">
@@ -30,13 +21,7 @@ export default function About() {
                                 src="/src/assets/headshot.jpeg"
                                 alt="Tanner Henning-Inman"
                             />
-                            <a
-                                href="#about"
-                                className="about-btn"
-                                onClick={handleScrollToSkills}
-                            >
-                                My Skills
-                            </a>
+                            <ToNextComponentButton targetId="skills" label="My Skills" />
                         </div>
                     </div>
 

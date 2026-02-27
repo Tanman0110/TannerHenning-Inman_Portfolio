@@ -237,43 +237,6 @@
     z-index: 10;
 }
 
-.skills-btn {
-    display: inline-block;
-    margin-top: 2.5rem;
-    padding: 0.85rem 2rem;
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: var(--accent); 
-    color: var(--tone-0); 
-    border: none;
-    cursor: pointer;
-    transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-    .skills-btn:visited,
-    .skills-btn:active,
-    .skills-btn:hover {
-        color: var(--tone-0);
-        text-decoration: none;
-    }
-
-    /* Hover effect */
-    .skills-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .skills-btn:focus {
-        outline: none;
-    }
-
-    .skills-btn:focus-visible {
-        outline: 2px solid rgba(0, 0, 0, 0.35);
-        outline-offset: 4px;
-    }
-
 @keyframes shine {
     from {
         transform: translateX(-35%) rotate(10deg);

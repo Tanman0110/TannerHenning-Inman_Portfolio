@@ -15,8 +15,6 @@
 /* Title */
 .projects-titleWrap {
     text-align: center;
-    margin-top: 0.5rem;
-    margin-bottom: 1.6rem;
 }
 
 .projects-title {
@@ -64,47 +62,10 @@
     max-width: 60ch;
 }
 
-.skills-btnWrap {
+.projects-btnWrap {
     margin-top: auto !important;
     padding-bottom: 7rem !important;
 }
-
-/* Button */
-.projects-btn {
-    display: inline-block;
-    padding: 0.85rem 2rem;
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: var(--accent);
-    color: var(--tone-0);
-    border: none;
-    cursor: pointer;
-    transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-    .projects-btn:visited,
-    .projects-btn:active,
-    .projects-btn:hover {
-        color: var(--tone-0);
-        text-decoration: none;
-    }
-
-    /* Hover effect */
-    .projects-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .projects-btn:focus {
-        outline: none;
-    }
-
-    .projects-btn:focus-visible {
-        outline: 2px solid rgba(0, 0, 0, 0.35);
-        outline-offset: 4px;
-    }
 
 @media (max-width: 900px) {
     .projects-inner {

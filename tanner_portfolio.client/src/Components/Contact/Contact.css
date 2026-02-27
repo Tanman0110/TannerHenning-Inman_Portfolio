@@ -252,41 +252,6 @@
     padding-bottom: 6.25rem;
 }
 
-.contact-btn {
-    display: inline-block;
-    padding: 0.85rem 2rem;
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: var(--accent);
-    color: var(--tone-0);
-    border: none;
-    cursor: pointer;
-    transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-    .contact-btn:visited,
-    .contact-btn:active,
-    .contact-btn:hover {
-        color: var(--tone-0);
-        text-decoration: none;
-    }
-
-    .contact-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .contact-btn:focus {
-        outline: none;
-    }
-
-    .contact-btn:focus-visible {
-        outline: 2px solid rgba(0, 0, 0, 0.35);
-        outline-offset: 4px;
-    }
-
 @media (max-width: 520px) {
     .psyBottom {
         white-space: normal;

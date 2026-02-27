@@ -1,8 +1,8 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { smoothScrollToId } from "../../Utils/SmoothScroll";
 import "../Section.css";
 import "./Skills.css";
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 
 type SkillCard = { title: string; detail: string };
 type Category = { id: string; label: string; short: string; items: SkillCard[] };
@@ -56,15 +56,6 @@ function sleep(ms: number) {
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Skills() {
-
-    const HEADER_OFFSET = 85;
-
-    const handleScrollToProjects = (
-        e: React.MouseEvent<HTMLAnchorElement>
-    ) => {
-        e.preventDefault();
-        smoothScrollToId("projects", HEADER_OFFSET);
-    };
 
     const prefersReducedMotion = useReducedMotion();
 
@@ -391,9 +382,7 @@ export default function Skills() {
                     </div>
                 </div>
                 <div className="skills-btnWrap">
-                    <a href="#projects" className="skills-btn" onClick={handleScrollToProjects}>
-                        View My Projects
-                    </a>
+                    <ToNextComponentButton targetId="projects" label="View My Projects" />
                 </div>
             </div>
         </section>

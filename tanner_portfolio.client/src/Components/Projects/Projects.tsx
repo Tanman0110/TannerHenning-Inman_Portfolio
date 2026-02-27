@@ -1,16 +1,10 @@
 import React from "react";
 import { Construction } from "lucide-react";
-import { smoothScrollToId } from "../../Utils/SmoothScroll";
 import "../Section.css";
 import "./Projects.css";
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 
 export default function Projects() {
-    const HEADER_OFFSET = 85;
-
-    const handleScrollToExperience = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        smoothScrollToId("experience", HEADER_OFFSET);
-    };
 
     return (
         <section id="projects" className="section projects">
@@ -32,12 +26,9 @@ export default function Projects() {
                     </p>
                 </div>
 
-                <div className="skills-btnWrap">
-                    <a href="#experience" className="projects-btn" onClick={handleScrollToExperience}>
-                        My Experience
-                    </a>
+                <div className="projects-btnWrap">
+                    <ToNextComponentButton targetId="experience" label="My Experience" />
                 </div>
-
             </div>
         </section>
     );

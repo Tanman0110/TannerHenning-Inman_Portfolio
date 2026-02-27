@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { smoothScrollToId } from "../../Utils/SmoothScroll";
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 import "../Section.css";
 import "./Contact.css";
 
@@ -14,14 +14,6 @@ type ContactLink = {
 export default function Contact() {
     const [flipped, setFlipped] = useState(false);
     const reduceMotion = useReducedMotion();
-
-    const HEADER_OFFSET = 85;
-    const handleScrollToHome = (
-        e: React.MouseEvent<HTMLAnchorElement>
-    ) => {
-        e.preventDefault();
-        smoothScrollToId("home", HEADER_OFFSET);
-    };
 
     const front = useMemo(
         () => ({
@@ -158,13 +150,7 @@ export default function Contact() {
                     </button>
                 </div>
                 <div className="contact-btnWrap">
-                    <a
-                        href="#home"
-                        className="contact-btn"
-                        onClick={handleScrollToHome}
-                    >
-                        Back To Top
-                    </a>
+                    <ToNextComponentButton targetId="home" label="Back To Home" />
                 </div>
             </div>
         </section>
