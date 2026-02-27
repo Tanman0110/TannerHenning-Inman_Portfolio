@@ -1,11 +1,86 @@
-﻿#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+﻿/* LIGHT */
+:root {
+    --text: #3b3a36;
+    --text-strong: #2f2e2a;
+    --accent: #6b5e52;
+    --border: rgba(0, 0, 0, 0.12);
+    --shadow: rgba(0, 0, 0, 0.10);
+    --progress-track: rgba(0, 0, 0, 0.10);
+    --focus: rgba(107, 94, 82, 0.45);
+    /* Gradual tones (top -> bottom) */
+    --tone-0: #F7F2EC; /* Home */
+    --tone-1: #F1E9E0; /* About */
+    --tone-2: #E9DED4; /* Skills */
+    --tone-3: #DFD0C3; /* Projects */
+    --tone-4: #D2BEAE; /* Experience */
+    --tone-5: #C6AE9A; /* Contact */
+    /* Header/Footer */
+    --tone-6: #B99A83;
+    --header-bg: var(--tone-6);
+    --footer-bg: var(--tone-3);
+}
+
+    /* MIDNIGHT */
+    :root[data-theme="midnight"] {
+        --text: #e7eefc;
+        --text-strong: #ffffff;
+        --accent: #7aa2ff;
+        --border: rgba(231, 238, 252, 0.18);
+        --shadow: rgba(0, 0, 0, 0.45);
+        --progress-track: rgba(231, 238, 252, 0.16);
+        --focus: rgba(122, 162, 255, 0.45);
+        /* Gradual tones (top -> bottom) */
+        --tone-0: #061d40;
+        --tone-1: #071c3a;
+        --tone-2: #081a33;
+        --tone-3: #09182c;
+        --tone-4: #0a1526;
+        --tone-5: #0b1220;
+        /* Header/Footer */
+        --tone-6: #020a18;
+        --header-bg: var(--tone-6);
+        --footer-bg: var(--tone-0));
+    }
+
+    :root[data-theme="midnight"] {
+        color-scheme: dark;
+    }
+
+    :root:not([data-theme="midnight"]) {
+        color-scheme: light;
+    }
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    color: var(--text);
+    font-family: "Palatino Linotype", Palatino, "Book Antiqua", serif;
+    overflow-x: hidden;
+    background: linear-gradient( to bottom, var(--tone-0) 0%, var(--tone-1) 18%, var(--tone-2) 36%, var(--tone-3) 54%, var(--tone-4) 72%, var(--tone-5) 90%, var(--tone-6) 100% );
+    background-repeat: no-repeat;
+}
+
+#root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
     text-align: center;
 }
 
-th, td {
+th,
+td {
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.section,
+.home,
+.about,
+.skills,
+.projects,
+.experience,
+.contact {
+    background: transparent !important;
 }

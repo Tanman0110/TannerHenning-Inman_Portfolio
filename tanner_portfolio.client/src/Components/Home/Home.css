@@ -1,0 +1,33 @@
+.home {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem;
+}
+
+.home-content {
+    max-width: 1100px;
+}
+
+.home-line {
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 600;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 10px;
+}
+
+    .home-line + .home-line {
+        margin-top: 0.3rem;
+    }
+
+.home-subtitle {
+    margin-top: 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}

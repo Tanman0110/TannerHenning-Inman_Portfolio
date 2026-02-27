@@ -1,0 +1,162 @@
+.experience-inner {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    box-sizing: border-box;
+    padding-bottom: 2.75rem;
+}
+
+.experience-titleWrap {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.experience-title {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: -0.02em;
+}
+
+.experience-underline {
+    width: 90px;
+    height: 2px;
+    margin: 0.4rem auto 0;
+    background: var(--accent);
+    opacity: 0.9;
+}
+
+.experience-content {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    align-self: start;
+    text-align: left;
+}
+
+:root {
+    --exp-date-col: 190px;
+}
+
+.experience-headRow {
+    display: grid;
+    grid-template-columns: 1fr var(--exp-date-col);
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.4rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.22);
+}
+
+.experience-company {
+    font-weight: 650;
+    letter-spacing: 0.03em;
+    opacity: 0.95;
+    font-size: clamp(1.3rem, 1.25vw, 1.45rem);
+}
+
+.experience-date {
+    justify-self: end;
+    text-align: right;
+    white-space: nowrap;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.experience-rotations {
+    display: grid;
+    gap: 1.8rem;
+}
+
+.experience-rotation {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.experience-rotationHead {
+    display: grid;
+    grid-template-columns: 1fr var(--exp-date-col);
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.experience-rotationTitle {
+    font-weight: 600;
+    opacity: 0.95;
+    font-size: clamp(1.12rem, 1.05vw, 1.22rem);
+}
+
+.experience-rotationDate {
+    justify-self: end;
+    text-align: right;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.experience-bullets {
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style-type: square;
+    list-style-position: outside;
+}
+
+.experience-bullet {
+    margin: 0;
+    padding: 0;
+    opacity: 0.88;
+    font-size: clamp(1.05rem, 1.02vw, 1.1rem);
+    line-height: 1.75;
+}
+
+    .experience-bullet::marker {
+        color: var(--accent);
+        font-size: 0.9em;
+    }
+
+.experience-divider {
+    margin-top: 1.35rem;
+    height: 2px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.22);
+    border-radius: 999px;
+}
+
+.experience-btnWrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    padding-bottom: 6.25rem;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --exp-date-col: auto;
+    }
+
+    .experience-headRow {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .experience-date {
+        justify-self: start;
+        text-align: left;
+    }
+
+    .experience-rotationHead {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+
+    .experience-rotationDate {
+        justify-self: start;
+        text-align: left;
+    }
+}
