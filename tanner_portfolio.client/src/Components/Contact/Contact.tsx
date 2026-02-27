@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { smoothScrollToId } from "../../Utils/SmoothScroll";
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 import "../Section.css";
 import "./Contact.css";
 
@@ -14,14 +14,6 @@ type ContactLink = {
 export default function Contact() {
     const [flipped, setFlipped] = useState(false);
     const reduceMotion = useReducedMotion();
-
-    const HEADER_OFFSET = 85;
-    const handleScrollToHome = (
-        e: React.MouseEvent<HTMLAnchorElement>
-    ) => {
-        e.preventDefault();
-        smoothScrollToId("home", HEADER_OFFSET);
-    };
 
     const front = useMemo(
         () => ({
@@ -88,14 +80,14 @@ export default function Contact() {
                 <div className="contact-stage">
                     <button
                         type="button"
-                        className="psyCard"
+                        className="cardCard"
                         onClick={toggle}
                         onKeyDown={onKeyDown}
                         aria-pressed={flipped}
                         aria-label={flipped ? "Flip card to front" : "Flip card to back"}
                     >
                         <motion.span
-                            className="psyCard-inner"
+                            className="cardCard-inner"
                             style={{ transformStyle: "preserve-3d" }}
                             animate={{ rotateY: flipped ? 180 : 0 }}
                             transition={
@@ -111,60 +103,54 @@ export default function Contact() {
                             whileTap={reduceMotion ? undefined : { scale: 0.995 }}
                         >
                             {/* FRONT */}
-                            <span className="psyFace psyFront">
-                                <span className="psyTopRow">
-                                    <span className="psyTopLeft">{front.topLeft}</span>
+                            <span className="cardFace cardFront">
+                                <span className="cardTopRow">
+                                    <span className="cardTopLeft">{front.topLeft}</span>
 
-                                    <span className="psyTopRight">
-                                        <span className="psyFirm">{front.topRightLine1}</span>
-                                        <span className="psyDept">{front.topRightLine2}</span>
+                                    <span className="cardTopRight">
+                                        <span className="cardFirm">{front.topRightLine1}</span>
+                                        <span className="cardDept">{front.topRightLine2}</span>
                                     </span>
                                 </span>
 
-                                <span className="psyCenter">
-                                    <span className="psyName">{front.name}</span>
-                                    <span className="psyTitle">{front.title}</span>
+                                <span className="cardCenter">
+                                    <span className="cardName">{front.name}</span>
+                                    <span className="cardTitle">{front.title}</span>
                                 </span>
 
-                                <span className="psyBottom">{front.bottom}</span>
+                                <span className="cardBottom">{front.bottom}</span>
 
-                                <span className="psyHint">Click to flip</span>
+                                <span className="cardHint">Click to flip</span>
                             </span>
 
                             {/* BACK */}
-                            <span className="psyFace psyBack">
-                                <span className="psyBackHeader">CONTACT INFORMATION</span>
-                                <span className="psyBackRule" aria-hidden="true" />
+                            <span className="cardFace cardBack">
+                                <span className="cardBackHeader">CONTACT INFORMATION</span>
+                                <span className="cardBackRule" aria-hidden="true" />
 
-                                <span className="psyLinks">
+                                <span className="cardLinks">
                                     {links.map((l) => (
                                         <a
                                             key={l.kind}
-                                            className="psyLink"
+                                            className="cardLink"
                                             href={l.href}
                                             target={l.kind === "email" ? undefined : "_blank"}
                                             rel={l.kind === "email" ? undefined : "noreferrer"}
                                             onClick={(e) => e.stopPropagation()}
                                         >
-                                            <span className="psyIcon">{iconFor(l.kind)}</span>
-                                            <span className="psyLinkText">{l.label}</span>
+                                            <span className="cardIcon">{iconFor(l.kind)}</span>
+                                            <span className="cardLinkText">{l.label}</span>
                                         </a>
                                     ))}
                                 </span>
 
-                                <span className="psyHint">Click to flip</span>
+                                <span className="cardHint">Click to flip</span>
                             </span>
                         </motion.span>
                     </button>
                 </div>
                 <div className="contact-btnWrap">
-                    <a
-                        href="#home"
-                        className="contact-btn"
-                        onClick={handleScrollToHome}
-                    >
-                        Back To Top
-                    </a>
+                    <ToNextComponentButton targetId="home" label="Back To Home" />;
                 </div>
             </div>
         </section>

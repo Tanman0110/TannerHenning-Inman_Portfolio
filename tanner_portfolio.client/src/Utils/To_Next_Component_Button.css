@@ -1,0 +1,35 @@
+.to-next-btn {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--accent);
+    color: var(--tone-0);
+    border: none;
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+    .to-next-btn:visited,
+    .to-next-btn:active,
+    .to-next-btn:hover {
+        color: var(--tone-0);
+        text-decoration: none;
+    }
+
+    .to-next-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .to-next-btn:focus {
+        outline: none;
+    }
+
+    .to-next-btn:focus-visible {
+        outline: 2px solid rgba(0, 0, 0, 0.35);
+        outline-offset: 4px;
+    }

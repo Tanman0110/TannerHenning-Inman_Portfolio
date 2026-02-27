@@ -1,9 +1,6 @@
-import React from "react";
-import { smoothScrollToId } from "../../Utils/SmoothScroll";
 import "../Section.css";
 import "./Experience.css";
-
-const HEADER_OFFSET = 85;
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 
 type Rotation = {
     title: string;
@@ -54,10 +51,6 @@ const ROTATIONS: Rotation[] = [
 ];
 
 export default function Experience() {
-    const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        smoothScrollToId("contact", HEADER_OFFSET);
-    };
 
     return (
         <section id="experience" className="section experience">
@@ -102,13 +95,7 @@ export default function Experience() {
                 </div>
 
                 <div className="experience-btnWrap">
-                    <a
-                        href="#contact"
-                        className="experience-btn"
-                        onClick={handleScrollToContact}
-                    >
-                        Contact Me
-                    </a>
+                    <ToNextComponentButton targetId="contact" label="Contact Me" />
                 </div>
             </div>
         </section>

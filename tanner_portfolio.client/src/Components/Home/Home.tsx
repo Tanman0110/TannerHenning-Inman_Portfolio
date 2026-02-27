@@ -2,15 +2,9 @@ import "../Section.css";
 import "./Home.css";
 import React from "react";
 import { smoothScrollToId } from "../../Utils/SmoothScroll";
+import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 
 export default function Home() {
-    const HEADER_OFFSET = 85;
-    const handleScrollToAbout = (
-        e: React.MouseEvent<HTMLAnchorElement>
-    ) => {
-        e.preventDefault();
-        smoothScrollToId("about", HEADER_OFFSET);
-    };
 
     return (
         <section id="home" className="home">
@@ -26,13 +20,7 @@ export default function Home() {
                     Tanner Henning-Inman — Full Stack Developer
                 </p>
 
-                <a
-                    href="#about"
-                    className="home-btn"
-                    onClick={handleScrollToAbout}
-                >
-                    Learn About Me
-                </a>
+                <ToNextComponentButton targetId="about" label="Learn About Me" />
             </div>
         </section>
     );
