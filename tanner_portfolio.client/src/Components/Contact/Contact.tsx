@@ -42,8 +42,8 @@ export default function Contact() {
             },
             {
                 kind: "github",
-                label: "github.com/your-handle",
-                href: "https://github.com/your-handle",
+                label: "https://github.com/Tanman0110",
+                href: "https://github.com/Tanman0110",
             },
         ],
         []
