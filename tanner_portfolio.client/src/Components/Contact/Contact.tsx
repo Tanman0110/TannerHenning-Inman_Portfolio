@@ -150,7 +150,7 @@ export default function Contact() {
                     </button>
                 </div>
                 <div className="contact-btnWrap">
-                    <ToNextComponentButton targetId="home" label="Back To Home" />;
+                    <ToNextComponentButton targetId="home" label="Back To Home" />
                 </div>
             </div>
         </section>
