@@ -7,7 +7,9 @@
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "master -d dist"
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
