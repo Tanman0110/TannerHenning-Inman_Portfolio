@@ -1,6 +1,7 @@
 import "../Section.css";
 import "./About.css";
 import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
+import headshot from "../../assets/headshot.jpeg";
 
 export default function About() {
 
@@ -18,7 +19,7 @@ export default function About() {
                         <div className="about-photoWrap">
                             <img
                                 className="about-photo"
-                                src="/src/assets/headshot.jpeg"
+                                src={headshot}
                                 alt="Tanner Henning-Inman"
                             />
                             <ToNextComponentButton targetId="skills" label="My Skills" />
