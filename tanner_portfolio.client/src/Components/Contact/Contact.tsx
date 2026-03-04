@@ -23,7 +23,7 @@ export default function Contact() {
             name: "Tanner Henning-Inman",
             title: "Full Stack Developer",
             bottom:
-                "358 Exchange Place West Virginia, W.V. 10099  FAX 212 555 6390  TELEX 10 4534",
+                "358 Exchange Place West Virginia, W.V. 10099  FAX 304 290 4028  TELEX 10 4534",
         }),
         []
     );
