@@ -9,14 +9,13 @@ type Rotation = {
 };
 
 const COMPANY = "UPMC - IT Rotational Program";
-const RANGE = "Jul 2023 - Jun 2025";
 
 const ROTATIONS: Rotation[] = [
     {
         title: "Enterprise Data Integrations - Software Engineer",
         range: "Jul 2023 - Dec 2023",
         bullets: [
-            "Created a Dead Letter Queue that reduced ticketing for on call personal by 50%",
+            "Created a Dead Letter Queue that reduced ticketing for on call personel by 50%",
             "Revisited and revitalized old interfaces to handle more traffic",
             "Created an Azure Data Explorer Dashboard to easily view and monitor messages accross all interfaces"
         ]
@@ -36,16 +35,16 @@ const ROTATIONS: Rotation[] = [
         bullets: [
             "Created an automation process to assign user training and approve users for access to EPIC once training was completed for over 100,000 employees",
             "Reduced codebase by writing script to automatically transform HTML files into JSON and import into database to dynamically load webpages",
-            "Redesigned UI and backend services for 10+ year old tools to give a sleeker design, more rounded user experience, and responsive times"
+            "Redesigned UI and backend services for 10+ year old tools to give a sleeker design, more rounded user experience, and response time"
         ]
     },
     {
         title: "Security Operations Center - Systems Analyst",
         range: "Jan 2025 - Jun 2025",
         bullets: [
-            "Investigated and remediated potential security breaches by triaging and resolving SOC tickets.",
-            "Performed log analysis and threat classification.",
-            "Contributed to incident response documentation improvements."
+            "Investigated and remediated potential security breaches by triaging and resolving SOC tickets",
+            "Performed log analysis and threat classification",
+            "Contributed to incident response documentation improvements"
         ]
     }
 ];
@@ -66,7 +65,6 @@ export default function Experience() {
 
                     <div className="experience-headRow">
                         <div className="experience-company">{COMPANY}</div>
-                        <div className="experience-date">{RANGE}</div>
                     </div>
 
                     <div className="experience-rotations">
