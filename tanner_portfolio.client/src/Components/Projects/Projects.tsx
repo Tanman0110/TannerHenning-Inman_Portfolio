@@ -5,7 +5,7 @@ import "./Projects.css";
 import ToNextComponentButton from "../../Utils/To_Next_Component_Button";
 
 import musicWrappedPoster from "../../assets/music-wrapped-poster.jpeg";
-import musicWrappedDemo from "../../assets/music-wrapped-demo.mp4";
+import musicWrappedDemo from "../../assets/music-wrapped-demo-web.mp4";
 
 export default function Projects() {
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -40,7 +40,7 @@ export default function Projects() {
                                 ref={videoRef}
                                 className="project-video"
                                 poster={musicWrappedPoster}
-                                preload="metadata"
+                                preload="auto"
                                 playsInline
                                 controls
                                 onPlay={() => setIsPlaying(true)}
