@@ -1,9 +1,13 @@
+.contact {
+    scroll-margin-top: 95px;
+}
+
 .contact-inner {
-    width: min(820px, 96vw);
+    width: min(860px, 96vw);
     margin: 0 auto;
     min-height: 100svh;
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     box-sizing: border-box;
     padding-bottom: 3.25rem;
     align-content: start;
@@ -17,6 +21,7 @@
 
 .contact-title {
     margin: 0;
+    color: var(--text-strong);
     font-size: clamp(2.2rem, 4vw, 3.4rem);
     letter-spacing: -0.02em;
 }
@@ -57,7 +62,7 @@
 }
 
 .cardCard-inner {
-    width: min(750px, 96vw);
+    width: min(760px, 96vw);
     aspect-ratio: 1.95 / 1;
     position: relative;
     display: block;
@@ -72,14 +77,15 @@
 .cardFace {
     position: absolute;
     inset: 0;
-    border-radius: 0px;
+    border-radius: 26px;
     backface-visibility: hidden;
-    background: #f2efe7;
-    color: rgba(30, 28, 26, 0.82);
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22), 0 2px 0 rgba(0, 0, 0, 0.05);
-    background-image: radial-gradient(circle at 15% 18%, rgba(0, 0, 0, 0.035), transparent 46%), radial-gradient(circle at 85% 72%, rgba(0, 0, 0, 0.03), transparent 48%), repeating-linear-gradient( 135deg, rgba(0, 0, 0, 0.016) 0px, rgba(0, 0, 0, 0.016) 1px, rgba(255, 255, 255, 0) 3px, rgba(255, 255, 255, 0) 7px );
+    background: color-mix(in srgb, var(--tone-0) 78%, white 22%);
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 60px var(--shadow), 0 1px 0 rgba(255, 255, 255, 0.22) inset;
+    background-image: radial-gradient(circle at 15% 18%, rgba(0, 0, 0, 0.035), transparent 46%), radial-gradient(circle at 85% 72%, rgba(0, 0, 0, 0.03), transparent 48%), repeating-linear-gradient( 135deg, rgba(0, 0, 0, 0.012) 0px, rgba(0, 0, 0, 0.012) 1px, rgba(255, 255, 255, 0) 3px, rgba(255, 255, 255, 0) 7px );
     background-blend-mode: multiply;
+    overflow: hidden;
 }
 
 /* Front */
@@ -117,10 +123,11 @@
 
 .cardFirm {
     font-family: "Garamond", "Times New Roman", serif;
+    color: var(--text-strong);
     font-size: clamp(1.06rem, 1.45vw, 1.28rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.86;
+    opacity: 0.92;
     white-space: nowrap;
 }
 
@@ -128,7 +135,7 @@
     font-family: "Garamond", "Times New Roman", serif;
     font-size: clamp(0.86rem, 1.08vw, 1.03rem);
     letter-spacing: 0.10em;
-    opacity: 0.58;
+    opacity: 0.62;
     white-space: nowrap;
 }
 
@@ -141,20 +148,22 @@
 
 .cardName {
     font-family: "Garamond", "Times New Roman", serif;
+    color: var(--text-strong);
     font-size: clamp(1.65rem, 2.55vw, 2.1rem);
     letter-spacing: 0.08em;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    opacity: 0.88;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45), 0 -1px 0 rgba(0, 0, 0, 0.08);
+    opacity: 0.94;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 .cardTitle {
     font-family: "Garamond", "Times New Roman", serif;
+    color: var(--accent);
     font-size: clamp(1.08rem, 1.45vw, 1.28rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.68;
+    opacity: 0.82;
 }
 
 .cardBottom {
@@ -179,16 +188,17 @@
 
 .cardBackHeader {
     font-family: "Garamond", "Times New Roman", serif;
+    color: var(--text-strong);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.82;
+    opacity: 0.88;
     font-size: clamp(1.05rem, 1.55vw, 1.25rem);
 }
 
 .cardBackRule {
     height: 1px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.18);
+    background: var(--border);
 }
 
 .cardLinks {
@@ -203,14 +213,14 @@
     gap: 0.7rem;
     align-items: center;
     text-decoration: none;
-    color: rgba(30, 28, 26, 0.82);
-    padding: 0.55rem 0.65rem;
-    border-radius: 10px;
+    color: var(--text);
+    padding: 0.65rem 0.75rem;
+    border-radius: 14px;
     transition: transform 180ms ease, background 180ms ease;
 }
 
     .cardLink:hover {
-        background: rgba(0, 0, 0, 0.04);
+        background: rgba(0, 0, 0, 0.045);
         transform: translateY(-1px);
     }
 
@@ -221,27 +231,31 @@
 .cardIcon {
     display: grid;
     place-items: center;
-    opacity: 0.85;
+    color: var(--accent);
+    opacity: 0.95;
 }
 
 .cardLinkText {
     font-family: "Garamond", "Times New Roman", serif;
     letter-spacing: 0.08em;
-    opacity: 0.72;
+    opacity: 0.8;
     font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+    overflow-wrap: anywhere;
 }
 
 .cardHint {
     justify-self: center;
+    color: var(--accent);
     font-size: 0.78rem;
+    font-weight: 800;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    opacity: 0.45;
+    opacity: 0.55;
     margin-top: 0.6rem;
 }
 
 .cardCard:focus-visible .cardFace {
-    outline: 2px solid rgba(0, 0, 0, 0.35);
+    outline: 2px solid var(--focus);
     outline-offset: 6px;
 }
 
@@ -251,6 +265,10 @@
     padding-top: 1.5rem;
     padding-bottom: 6.25rem;
 }
+
+    .contact-btnWrap .to-next-btn {
+        margin-top: 0;
+    }
 
 .contact-btn {
     display: inline-block;
@@ -275,7 +293,7 @@
 
     .contact-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 20px var(--shadow);
     }
 
     .contact-btn:focus {
@@ -283,14 +301,53 @@
     }
 
     .contact-btn:focus-visible {
-        outline: 2px solid rgba(0, 0, 0, 0.35);
+        outline: 2px solid var(--focus);
         outline-offset: 4px;
     }
 
-@media (max-width: 520px) {
+:root[data-theme="midnight"] .cardFace {
+    background: color-mix(in srgb, var(--tone-2) 86%, white 14%);
+}
+
+:root[data-theme="midnight"] .cardLink:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 640px) {
+    .cardCard-inner {
+        aspect-ratio: 1.35 / 1;
+    }
+
+    .cardTopRow {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .cardTopLeft,
+    .cardTopRight {
+        justify-self: center;
+        text-align: center;
+        justify-items: center;
+    }
+
     .cardBottom {
         white-space: normal;
         overflow: visible;
         text-overflow: clip;
+        line-height: 1.35;
+    }
+}
+
+@media (max-width: 520px) {
+    .cardFace {
+        border-radius: 20px;
+    }
+
+    .cardName {
+        font-size: clamp(1.25rem, 7vw, 1.65rem);
+    }
+
+    .cardLinkText {
+        letter-spacing: 0.04em;
     }
 }

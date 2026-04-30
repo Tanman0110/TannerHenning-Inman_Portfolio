@@ -1,5 +1,9 @@
+.about {
+    scroll-margin-top: 95px;
+}
+
 .about-inner {
-    width: min(1100px, 100%);
+    width: min(1120px, 100%);
     margin: 0 auto;
     padding-bottom: 5rem;
 }
@@ -11,6 +15,7 @@
 
 .about-title {
     margin: 0;
+    color: var(--text-strong);
     font-size: clamp(2.2rem, 4vw, 3.4rem);
     letter-spacing: -0.02em;
 }
@@ -25,41 +30,78 @@
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: 2rem;
-    align-items: start;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.35fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: stretch;
+    padding: 0 1.25rem;
+}
+
+.about-left,
+.about-content {
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--tone-0) 78%, white 22%);
+    box-shadow: 0 18px 44px var(--shadow);
+    border-radius: 28px;
+}
+
+.about-left {
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .about-photoWrap {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 1.15rem;
 }
 
 .about-photo {
-    width: min(320px, 100%);
+    width: min(330px, 100%);
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    border-radius: 22px;
+    border: 1px solid var(--border);
+    box-shadow: 0 18px 40px var(--shadow);
+}
+
+.about-photoWrap .to-next-btn {
+    margin-top: 0;
+}
+
+.about-content {
+    padding: clamp(1.35rem, 3vw, 2.25rem);
+    text-align: left;
 }
 
 .about-kicker {
     margin: 0 0 1rem;
-    font-size: 1.2rem;
-    letter-spacing: 0.25em;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    opacity: 0.75;
 }
 
 .about-body p {
-    margin: 0 0 1.2rem;
-    font-size: clamp(1.05rem, 1vw, 1.15rem);
-    line-height: 1.75;
-    opacity: 0.9;
+    margin: 0 0 1.15rem;
+    color: var(--text);
+    font-size: clamp(1.02rem, 1.05vw, 1.14rem);
+    font-weight: 600;
+    line-height: 1.78;
+    opacity: 0.92;
+}
+
+    .about-body p:last-child {
+        margin-bottom: 0;
+    }
+
+:root[data-theme="midnight"] .about-left,
+:root[data-theme="midnight"] .about-content {
+    background: color-mix(in srgb, var(--tone-2) 86%, white 14%);
 }
 
 @media (max-width: 900px) {
@@ -70,8 +112,19 @@
     .about-photo {
         width: min(420px, 100%);
     }
+}
 
-    .about-cards {
-        grid-template-columns: 1fr;
+@media (max-width: 640px) {
+    .about-grid {
+        padding-inline: 0.85rem;
+    }
+
+    .about-left,
+    .about-content {
+        border-radius: 22px;
+    }
+
+    .about-content {
+        text-align: center;
     }
 }
