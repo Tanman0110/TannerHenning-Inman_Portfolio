@@ -1,5 +1,9 @@
+.experience {
+    scroll-margin-top: 95px;
+}
+
 .experience-inner {
-    width: min(1100px, 100%);
+    width: min(1120px, 100%);
     margin: 0 auto;
     min-height: 100svh;
     display: grid;
@@ -16,6 +20,7 @@
 
 .experience-title {
     margin: 0;
+    color: var(--text-strong);
     font-size: clamp(2.2rem, 4vw, 3.4rem);
     letter-spacing: -0.02em;
 }
@@ -29,11 +34,16 @@
 }
 
 .experience-content {
-    width: min(900px, 100%);
+    width: min(940px, 100%);
     margin: 0 auto;
-    padding: 0 1.25rem;
+    padding: clamp(1.25rem, 2.5vw, 2rem);
     align-self: start;
     text-align: left;
+    box-sizing: border-box;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: color-mix(in srgb, var(--tone-0) 78%, white 22%);
+    box-shadow: 0 20px 55px var(--shadow);
 }
 
 :root {
@@ -45,35 +55,53 @@
     grid-template-columns: 1fr var(--exp-date-col);
     align-items: baseline;
     gap: 1rem;
-    padding-bottom: 1.1rem;
+    padding-bottom: 1.3rem;
+    margin-bottom: 1.3rem;
+    border-bottom: 1px solid var(--border);
 }
 
 .experience-company {
-    font-weight: 650;
-    letter-spacing: 0.03em;
-    opacity: 0.95;
-    font-size: 28px;
+    color: var(--text-strong);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.45rem, 2.4vw, 1.9rem);
 }
 
 .experience-date {
     justify-self: end;
     text-align: right;
     white-space: nowrap;
-    font-size: 1rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
 .experience-rotations {
     display: grid;
-    gap: 1.8rem;
+    gap: 1.2rem;
 }
 
 .experience-rotation {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.65rem;
+    position: relative;
+    padding: 0.2rem 0 0.15rem 1.35rem;
 }
+
+    .experience-rotation::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.45rem;
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
 
 .experience-rotationHead {
     display: grid;
@@ -83,24 +111,27 @@
 }
 
 .experience-rotationTitle {
-    font-weight: 600;
-    opacity: 0.95;
-    font-size: clamp(1.12rem, 1.05vw, 1.22rem);
+    color: var(--text-strong);
+    font-weight: 800;
+    font-size: clamp(1.08rem, 1.12vw, 1.22rem);
+    line-height: 1.35;
 }
 
 .experience-rotationDate {
     justify-self: end;
     text-align: right;
     white-space: nowrap;
-    font-size: 0.95rem;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.6;
+    opacity: 0.78;
 }
 
 .experience-bullets {
     margin: 0;
-    padding-left: 1.25rem;
+    padding-left: 1.05rem;
     list-style-type: square;
     list-style-position: outside;
 }
@@ -108,9 +139,11 @@
 .experience-bullet {
     margin: 0;
     padding: 0;
-    opacity: 0.88;
-    font-size: clamp(1.05rem, 1.02vw, 1.1rem);
-    line-height: 1.75;
+    color: var(--text);
+    font-size: clamp(1rem, 1.02vw, 1.08rem);
+    font-weight: 600;
+    line-height: 1.72;
+    opacity: 0.9;
 }
 
     .experience-bullet::marker {
@@ -119,10 +152,10 @@
     }
 
 .experience-divider {
-    margin-top: 1.35rem;
-    height: 2px;
+    margin-top: 1rem;
+    height: 1px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.22);
+    background: var(--border);
     border-radius: 999px;
 }
 
@@ -133,9 +166,21 @@
     padding-bottom: 6.25rem;
 }
 
+    .experience-btnWrap .to-next-btn {
+        margin-top: 0;
+    }
+
+:root[data-theme="midnight"] .experience-content {
+    background: color-mix(in srgb, var(--tone-2) 86%, white 14%);
+}
+
 @media (max-width: 900px) {
     :root {
         --exp-date-col: auto;
+    }
+
+    .experience-content {
+        margin-inline: 1rem;
     }
 
     .experience-headRow {
@@ -156,5 +201,16 @@
     .experience-rotationDate {
         justify-self: start;
         text-align: left;
+    }
+}
+
+@media (max-width: 640px) {
+    .experience-content {
+        border-radius: 22px;
+        padding: 1.1rem;
+    }
+
+    .experience-rotation {
+        padding-left: 1rem;
     }
 }

@@ -13,12 +13,12 @@ const CATEGORIES: Category[] = [
         label: "Backend & Data",
         short: "BE",
         items: [
-            { title: "ASP.NET Core", detail: "APIs, services, clean architecture" },
-            { title: "Entity Framework", detail: "ORM patterns, migrations, query design" },
-            { title: "C#", detail: "Enterprise development + tooling" },
-            { title: "Java / Python", detail: "Utilities, scripting, problem solving" },
+            { title: "ASP.NET Core", detail: "REST APIs, services, controllers, and backend architecture" },
+            { title: "Entity Framework Core", detail: "Migrations, relationships, query design, and PostgreSQL integration" },
+            { title: "C#", detail: "Enterprise development, API logic, and backend tooling" },
+            { title: "PostgreSQL", detail: "Relational data modeling, migrations, and production database workflows" },
             { title: "SQL Server (SSMS)", detail: "Experience working in SSMS for SQL Server workflows" },
-            { title: "MySQL", detail: "Relational DB fundamentals + practical querying" },
+            { title: "Java / Python", detail: "Utilities, scripting, problem solving" },
         ],
     },
     {
@@ -26,23 +26,36 @@ const CATEGORIES: Category[] = [
         label: "Frontend",
         short: "FE",
         items: [
-            { title: "React", detail: "Components, state, UI composition" },
-            { title: "Angular", detail: "Structured SPA development" },
-            { title: "TypeScript", detail: "Typed UI + safer refactors" },
-            { title: "JavaScript", detail: "Modern JS patterns" },
-            { title: "HTML / CSS", detail: "Responsive layouts + styling systems" },
+            { title: "React", detail: "Components, state, hooks, routing, and UI composition" },
+            { title: "TypeScript / JavaScript", detail: "Typed frontend patterns, safer refactors, and modern JS" },
+            { title: "Angular", detail: "Structured SPA development and enterprise UI modernization" },
+            { title: "HTML / CSS", detail: "Responsive layouts, styling systems, and polished user experiences" },
+            { title: "Vite", detail: "Modern frontend tooling, builds, static deployment, and environment config" },
         ],
     },
     {
         id: "delivery",
-        label: "Delivery & Certifications",
+        label: "Delivery & Security",
         short: "DX",
         items: [
-            { title: "Agile / Scrum", detail: "Iterative delivery, ceremonies, sprint planning" },
-            { title: "DevOps Practices", detail: "CI/CD awareness, automation mindset, reliable delivery" },
-            { title: "Git", detail: "Branching, PR workflows, collaboration" },
-            { title: "Azure DevOps", detail: "Boards/work items + team delivery workflows" },
-            { title: "CompTIA Security+", detail: "Security fundamentals" },
+            { title: "Azure DevOps", detail: "Repos, pipeline planning, secure variables, and release workflows" },
+            { title: "Azure App Service", detail: "Cloud deployment planning for full-stack web applications" },
+            { title: "CI/CD Pipelines", detail: "Build and deployment automation with environment-based configuration" },
+            { title: "JWT Authentication", detail: "Protected routes, admin authorization, and secure API access patterns" },
+            { title: "PayPal Checkout", detail: "Payment provider integration, sandbox testing, and checkout workflows" },
+            { title: "CompTIA Security+", detail: "Security fundamentals and secure development awareness" },
+        ],
+    },
+    {
+        id: "tools",
+        label: "Tools & APIs",
+        short: "TL",
+        items: [
+            { title: "Swagger / Postman", detail: "API testing, request validation, and local backend debugging" },
+            { title: "Git", detail: "Branching, commits, repository setup, and collaborative workflows" },
+            { title: "Visual Studio", detail: "ASP.NET Core development, Package Manager Console, and EF workflows" },
+            { title: "REST APIs", detail: "Endpoint design, JSON payloads, integration testing, and service communication" },
+            { title: "OAuth / PKCE", detail: "Secure client-side authentication patterns for Spotify integration" },
         ],
     },
 ];
@@ -56,7 +69,6 @@ function sleep(ms: number) {
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Skills() {
-
     const prefersReducedMotion = useReducedMotion();
 
     const [phase, setPhase] = useState<Phase>("idle");
@@ -190,7 +202,7 @@ export default function Skills() {
     const rowAnimate = phase === "idle" ? { y: 0 } : { y: dockY };
     const rowTransition = prefersReducedMotion
         ? { duration: 0 }
-        : { duration: .5, ease: [0.16, 1, 0.3, 1] as const };
+        : { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const };
 
     const cardInitial = (i: number, v: { dx: number; dy: number }) => ({
         opacity: 0,
@@ -237,8 +249,7 @@ export default function Skills() {
                 </div>
 
                 <div
-                    className={`skills-stage ${phase === "idle" ? "is-idle" : "is-docked"
-                        }`}
+                    className={`skills-stage ${phase === "idle" ? "is-idle" : "is-docked"}`}
                     ref={stageRef}
                 >
                     <motion.div
@@ -247,23 +258,18 @@ export default function Skills() {
                         transition={rowTransition}
                         onAnimationComplete={onRowAnimComplete}
                     >
-                        <div
-                            className="skills-circles"
-                            aria-label="Skill categories"
-                        >
+                        <div className="skills-circles" aria-label="Skill categories">
                             {CATEGORIES.map((cat) => {
                                 const active = cat.id === selectedId;
 
                                 return (
                                     <motion.button
-                                        key={`${cat.id}-${active ? pillHitTick : 0
-                                            }`}
+                                        key={`${cat.id}-${active ? pillHitTick : 0}`}
                                         ref={(el) => {
                                             pillRefs.current[cat.id] = el;
                                         }}
                                         type="button"
-                                        className={`skills-circle ${active ? "is-active" : ""
-                                            }`}
+                                        className={`skills-circle ${active ? "is-active" : ""}`}
                                         onClick={() => onPick(cat.id)}
                                         aria-pressed={active}
                                         initial={false}
@@ -280,31 +286,14 @@ export default function Skills() {
                                                 ? { duration: 0 }
                                                 : {
                                                     duration: 0.26,
-                                                    ease: [
-                                                        0.16,
-                                                        1,
-                                                        0.3,
-                                                        1,
-                                                    ] as const,
+                                                    ease: [0.16, 1, 0.3, 1] as const,
                                                 }
                                         }
-                                        whileHover={
-                                            prefersReducedMotion
-                                                ? undefined
-                                                : { scale: 1.04 }
-                                        }
-                                        whileTap={
-                                            prefersReducedMotion
-                                                ? undefined
-                                                : { scale: 0.99 }
-                                        }
+                                        whileHover={prefersReducedMotion ? undefined : { scale: 1.04 }}
+                                        whileTap={prefersReducedMotion ? undefined : { scale: 0.99 }}
                                     >
-                                        <span className="skills-circleShort">
-                                            {cat.short}
-                                        </span>
-                                        <span className="skills-circleLabel">
-                                            {cat.label}
-                                        </span>
+                                        <span className="skills-circleShort">{cat.short}</span>
+                                        <span className="skills-circleLabel">{cat.label}</span>
                                     </motion.button>
                                 );
                             })}
@@ -313,10 +302,7 @@ export default function Skills() {
 
                     <div className="skills-panel">
                         {shownCategory && phase === "docked" && (
-                            <div
-                                className="skills-grid"
-                                aria-hidden="true"
-                            >
+                            <div className="skills-grid" aria-hidden="true">
                                 {shownCategory.items.map((item, i) => (
                                     <div
                                         key={`${shownCategory.id}-slot-${item.title}`}
@@ -329,58 +315,36 @@ export default function Skills() {
                             </div>
                         )}
 
-                        <AnimatePresence
-                            mode="wait"
-                            onExitComplete={handleExitComplete}
-                        >
-                            {shownCategory &&
-                                phase === "docked" &&
-                                dealtCount > 0 && (
-                                    <div
-                                        className={`skills-dealLayer ${dealtCount ===
-                                                shownCategory.items.length
-                                                ? "is-complete"
-                                                : ""
-                                            }`}
-                                        aria-live="polite"
-                                    >
-                                        {shownCategory.items
-                                            .slice(0, dealtCount)
-                                            .map((item, i) => {
-                                                const v = vectors[i] ?? {
-                                                    dx: 0,
-                                                    dy: 0,
-                                                };
-                                                return (
-                                                    <motion.div
-                                                        key={`${shownCategory.id}-${item.title}`}
-                                                        className="skills-card"
-                                                        initial={cardInitial(
-                                                            i,
-                                                            v
-                                                        )}
-                                                        animate={
-                                                            discarding
-                                                                ? undefined
-                                                                : cardAnimate
-                                                        }
-                                                        exit={cardExit}
-                                                    >
-                                                        <div className="skills-cardShine" />
-                                                        <div className="skills-cardTitle">
-                                                            {item.title}
-                                                        </div>
-                                                        <div className="skills-cardDetail">
-                                                            {item.detail}
-                                                        </div>
-                                                    </motion.div>
-                                                );
-                                            })}
-                                    </div>
-                                )}
+                        <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
+                            {shownCategory && phase === "docked" && dealtCount > 0 && (
+                                <div
+                                    className={`skills-dealLayer ${dealtCount === shownCategory.items.length ? "is-complete" : ""
+                                        }`}
+                                    aria-live="polite"
+                                >
+                                    {shownCategory.items.slice(0, dealtCount).map((item, i) => {
+                                        const v = vectors[i] ?? { dx: 0, dy: 0 };
+
+                                        return (
+                                            <motion.div
+                                                key={`${shownCategory.id}-${item.title}`}
+                                                className="skills-card"
+                                                initial={cardInitial(i, v)}
+                                                animate={discarding ? undefined : cardAnimate}
+                                                exit={cardExit}
+                                            >
+                                                <div className="skills-cardShine" />
+                                                <div className="skills-cardTitle">{item.title}</div>
+                                                <div className="skills-cardDetail">{item.detail}</div>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </div>
+                            )}
                         </AnimatePresence>
                     </div>
                 </div>
+
                 <div className="skills-btnWrap">
                     <ToNextComponentButton targetId="projects" label="View My Projects" />
                 </div>
